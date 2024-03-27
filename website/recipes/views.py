@@ -34,7 +34,11 @@ def register(request):
 
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
-    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
+    if request.user == recipe.user:  # Check if the current user is the owner of the recipe
+        can_edit = True
+    else:
+        can_edit = False
+    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe, 'can_edit': can_edit})
 
 @login_required
 def create_recipe(request):
@@ -48,3 +52,17 @@ def create_recipe(request):
     else:
         form = RecipeForm()
     return render(request, 'recipes/recipe_form.html', {'form': form})
+
+@login_required
+def edit_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    if request.user != recipe.user:  # Check if the current user is the owner of the recipe
+        return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page if user doesn't have permission
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, instance=recipe)
+        if form.is_valid():
+            form.save()
+            return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
+    else:
+        form = RecipeForm(instance=recipe)
+    return render(request, 'recipes/edit_recipe.html', {'form': form})

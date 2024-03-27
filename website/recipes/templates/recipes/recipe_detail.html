@@ -15,6 +15,9 @@
         <li>{{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
         {% endfor %}
     </ul>
+    {% if can_edit %}
+    <a href="{% url 'edit_recipe' pk=recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
+    {% endif %}
 </main>
   
 {% endblock %}

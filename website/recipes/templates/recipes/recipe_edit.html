@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Recipe - {{ recipe.title }}{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Edit Recipe - {{ recipe.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</main>
+{% endblock %}
