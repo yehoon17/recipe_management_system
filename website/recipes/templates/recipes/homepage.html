@@ -5,8 +5,10 @@
         <h2>Featured Recipes</h2>
         <!-- Display featured recipes -->
         {% for recipe in featured_recipes %}
-            <div>{{ recipe.title }}</div>
+        <div>
+            <a href="{% url 'recipe_detail' pk=recipe.pk %}">{{ recipe.title }}</a>
             <!-- Add more recipe details as needed -->
+        </div>
         {% endfor %}
     </section>
     <section class="search">
