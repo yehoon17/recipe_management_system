@@ -2,17 +2,19 @@
 {% block title %}{{ recipe.title }} - Recipe Detail{% endblock %}
 
 {% block content %}
-  <h2>{{ recipe.title }}</h2>
-  <p><strong>Description:</strong> {{ recipe.description }}</p>
-  <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }} minutes</p>
-  <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
-  <p><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
-  
-  <h3>Ingredients:</h3>
-  <ul>
-    {% for ingredient in recipe.ingredients.all %}
-      <li>{{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
-    {% endfor %}
-  </ul>
+<main>
+    <h2>{{ recipe.title }}</h2>
+    <p><strong>Description:</strong> {{ recipe.description }}</p>
+    <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }} minutes</p>
+    <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
+    <p><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
+
+    <h3>Ingredients:</h3>
+    <ul>
+        {% for ingredient in recipe.ingredients.all %}
+        <li>{{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
+        {% endfor %}
+    </ul>
+</main>
   
 {% endblock %}

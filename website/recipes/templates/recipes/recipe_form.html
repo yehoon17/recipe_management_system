@@ -2,10 +2,12 @@
 {% block title %}Create Recipe{% endblock %}
 
 {% block content %}
+<main>
   <h2>Create Recipe</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
   </form>
+</main>
 {% endblock %}

@@ -1,5 +1,10 @@
 h2 {
-    color: #cb2e2e;
+    color: #2ecb4b;
+}
+
+
+section {
+    margin-bottom: 40px; /* Add some margin to the bottom of each section */
 }
 
 .login-form {
