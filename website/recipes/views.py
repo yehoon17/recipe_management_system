@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Recipe, Category
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm
+from recipes.forms import CustomUserCreationForm
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
@@ -21,10 +21,10 @@ class CustomLoginView(LoginView):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')  # Redirect to login page after successful registration
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
