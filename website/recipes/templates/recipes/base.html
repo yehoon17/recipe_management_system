@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Recipe Management System{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Recipe Management System</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <!-- Add other navigation links as needed -->
+            </ul>
+        </nav>
+        <div class="auth">
+            <!-- Add authentication links (login, logout, etc.) here -->
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- The content of each individual page will be inserted here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Add footer content here (e.g., links, copyright) -->
+        </div>
+    </footer>
+
+</body>
+</html>
