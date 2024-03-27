@@ -65,4 +65,4 @@ def edit_recipe(request, pk):
             return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
     else:
         form = RecipeForm(instance=recipe)
-    return render(request, 'recipes/edit_recipe.html', {'form': form})
+    return render(request, 'recipes/recipe_edit.html', {'form': form})
