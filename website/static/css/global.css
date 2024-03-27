@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 }
 
 h1 {
@@ -54,4 +54,9 @@ footer {
     color: #fff;
     padding: 30px;
     text-align: center;
+}
+
+main {
+    padding-top: 30px; /* Add padding at the top of the main content */
+    padding-bottom: 30px; /* Add padding at the bottom of the main content */
 }
