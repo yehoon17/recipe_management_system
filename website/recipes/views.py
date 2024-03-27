@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Recipe, Category  # Import your models here
+from .models import Recipe, Category
+from django.contrib.auth.views import LoginView
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
@@ -11,3 +12,6 @@ def homepage(request):
     }
     
     return render(request, 'recipes/homepage.html', context)
+
+class CustomLoginView(LoginView):
+    template_name = 'recipes/login.html'
