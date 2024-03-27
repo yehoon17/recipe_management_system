@@ -9,18 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
 </head>
 <body>
-    <header>
-        <div class="logo">Recipe Management System</div>
-        <nav>
-            <ul>
-                <li><a href="{% url 'homepage' %}">Home</a></li>
-                <!-- Add other navigation links as needed -->
-            </ul>
-        </nav>
-        <div class="auth">
-            <!-- Add authentication links (login, logout, etc.) here -->
-        </div>
-    </header>
+    {% include 'recipes/header.html' %}
 
     <main>
         {% block content %}
@@ -28,11 +17,6 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <!-- Add footer content here (e.g., links, copyright) -->
-        </div>
-    </footer>
-
+    {% include 'recipes/footer.html' %}
 </body>
 </html>
