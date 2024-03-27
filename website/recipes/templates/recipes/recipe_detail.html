@@ -17,6 +17,10 @@
     </ul>
     {% if can_edit %}
     <a href="{% url 'edit_recipe' pk=recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
+    <form action="{% url 'delete_recipe' pk=recipe.pk %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Recipe</button>
+    </form>
     {% endif %}
 </main>
   

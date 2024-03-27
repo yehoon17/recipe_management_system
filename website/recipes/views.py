@@ -66,3 +66,11 @@ def edit_recipe(request, pk):
     else:
         form = RecipeForm(instance=recipe)
     return render(request, 'recipes/recipe_edit.html', {'form': form})
+
+@login_required
+def delete_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    if request.user == recipe.user:  # Check if the current user is the owner of the recipe
+        recipe.delete()
+    return redirect('homepage')
+
