@@ -7,8 +7,43 @@ h1 {
     color: #333;
 }
 
-/* static/css/global.css */
-/* Example global styles */
+header {
+    display: flex;
+    justify-content: space-between; /* Align items on opposite ends */
+    align-items: center; /* Vertically center items */
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #f0f0f0;
+}
+
+.login-link {
+    margin-left: auto; /* Push the login link to the far right */
+}
+
+.login-link a {
+    text-decoration: none;
+    color: #333; /* Adjust color as needed */
+}
+header nav ul {
+    list-style: none; /* Remove default list styles */
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 20px; /* Add spacing between list items */
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333; /* Adjust color as needed */
+    font-weight: bold; /* Make the font bold */
+    font-size: 30px; /* Increase font size */
+    transition: color 0.3s ease; /* Add transition effect for smoother color change */
+}
+
+header nav ul li a:hover {
+    color: #ff6600; /* Change color on hover */
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
