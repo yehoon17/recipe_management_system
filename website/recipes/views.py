@@ -3,6 +3,7 @@ from .models import Recipe, Category
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm
+from django.contrib.auth.decorators import login_required
 
 
 def homepage(request):
@@ -35,6 +36,7 @@ def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
 
+@login_required
 def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST)
