@@ -14,25 +14,39 @@ class Recipe(models.Model):
     cooking_time = models.PositiveIntegerField()  # in minutes
     difficulty_level = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.title
+
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     unit = models.CharField(max_length=50)
     recipes = models.ManyToManyField(Recipe, related_name='ingredients')
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    def __str__(self):
+        return self.name
+    
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+
+    def __str__(self):
+        return self.name
+    
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+class Rating(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    value = models.IntegerField()  # Rating value (e.g., 1 to 5)
+
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
