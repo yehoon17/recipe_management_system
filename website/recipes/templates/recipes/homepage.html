@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <section class="featured-recipes">
+        <h2>Featured Recipes</h2>
+        <!-- Display featured recipes -->
+        {% for recipe in featured_recipes %}
+            <div>{{ recipe.title }}</div>
+            <!-- Add more recipe details as needed -->
+        {% endfor %}
+    </section>
+    <section class="search">
+        <h2>Search Recipes</h2>
+    </section>
+    <section class="categories">
+        <h2>Popular Categories</h2>
+        <ul>
+            <!-- Display category links -->
+            {% for category in categories %}
+                <li><a href="">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock %}
