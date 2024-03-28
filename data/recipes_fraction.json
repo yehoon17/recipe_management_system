@@ -1,0 +1,545 @@
+[
+  {
+    "recipe": {
+      "title": "Chicken Alfredo",
+      "description": "Creamy pasta dish with grilled chicken and parmesan cheese.",
+      "preparation_time": 15,
+      "cooking_time": 20,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Fettuccine pasta", "quantity": 250, "unit": "grams"},
+        {"name": "Chicken breast", "quantity": 2, "unit": "units"},
+        {"name": "Heavy cream", "quantity": 1, "unit": "cup"},
+        {"name": "Parmesan cheese", "quantity": 100, "unit": "grams"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Butter", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Italian", "Pasta", "Creamy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Vegetable Stir-Fry",
+      "description": "Colorful medley of fresh vegetables sautéed in a savory sauce.",
+      "preparation_time": 10,
+      "cooking_time": 15,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Broccoli florets", "quantity": 1, "unit": "cup"},
+        {"name": "Bell peppers (assorted colors)", "quantity": 1, "unit": "cup"},
+        {"name": "Carrots", "quantity": 2, "unit": "units"},
+        {"name": "Snow peas", "quantity": 1, "unit": "cup"},
+        {"name": "Soy sauce", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Ginger", "quantity": 1, "unit": "teaspoon"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Vegetable oil", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Asian", "Stir-Fry", "Vegetarian"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Margherita Pizza",
+      "description": "Classic pizza topped with tomato sauce, fresh mozzarella, and basil leaves.",
+      "preparation_time": 20,
+      "cooking_time": 15,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Pizza dough", "quantity": 1, "unit": "ball"},
+        {"name": "Tomato sauce", "quantity": 1/2, "unit": "cup"},
+        {"name": "Fresh mozzarella", "quantity": 200, "unit": "grams"},
+        {"name": "Fresh basil leaves", "quantity": 1/4, "unit": "cup"},
+        {"name": "Olive oil", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"}
+      ],
+      "tags": ["Italian", "Pizza", "Vegetarian"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Beef Stroganoff",
+      "description": "Tender beef strips cooked in a creamy mushroom sauce, served over egg noodles.",
+      "preparation_time": 15,
+      "cooking_time": 25,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Beef sirloin steak", "quantity": 400, "unit": "grams"},
+        {"name": "Egg noodles", "quantity": 250, "unit": "grams"},
+        {"name": "Mushrooms", "quantity": 200, "unit": "grams"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Beef broth", "quantity": 1, "unit": "cup"},
+        {"name": "Sour cream", "quantity": 1/2, "unit": "cup"},
+        {"name": "Flour", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Butter", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Comfort Food", "Beef", "Creamy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Caprese Salad",
+      "description": "Simple salad made with ripe tomatoes, fresh mozzarella, basil, and balsamic glaze.",
+      "preparation_time": 10,
+      "cooking_time": 0,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Ripe tomatoes", "quantity": 2, "unit": "units"},
+        {"name": "Fresh mozzarella", "quantity": 200, "unit": "grams"},
+        {"name": "Fresh basil leaves", "quantity": 1/4, "unit": "cup"},
+        {"name": "Balsamic glaze", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Extra virgin olive oil", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Salt", "quantity": 1/4, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Italian", "Salad", "Vegetarian"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Thai Green Curry",
+      "description": "Spicy Thai curry made with green curry paste, coconut milk, and assorted vegetables.",
+      "preparation_time": 15,
+      "cooking_time": 20,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Green curry paste", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Coconut milk", "quantity": 1, "unit": "can"},
+        {"name": "Chicken breast", "quantity": 300, "unit": "grams"},
+        {"name": "Bell peppers (assorted colors)", "quantity": 1, "unit": "cup"},
+        {"name": "Zucchini", "quantity": 1, "unit": "unit"},
+        {"name": "Bamboo shoots", "quantity": 1/2, "unit": "cup"},
+        {"name": "Thai basil leaves", "quantity": 1/4, "unit": "cup"},
+        {"name": "Fish sauce", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Brown sugar", "quantity": 1, "unit": "tablespoon"}
+      ],
+      "tags": ["Thai", "Curry", "Spicy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Ratatouille",
+      "description": "Traditional French vegetable stew made with tomatoes, zucchini, eggplant, and bell peppers.",
+      "preparation_time": 20,
+      "cooking_time": 30,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Eggplant", "quantity": 1, "unit": "unit"},
+        {"name": "Zucchini", "quantity": 2, "unit": "units"},
+        {"name": "Bell peppers (assorted colors)", "quantity": 2, "unit": "units"},
+        {"name": "Tomatoes", "quantity": 4, "unit": "units"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Fresh thyme", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/2, "unit": "teaspoon"}
+      ],
+      "tags": ["French", "Stew", "Vegetarian"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Mushroom Risotto",
+      "description": "Creamy Italian rice dish cooked with mushrooms, onions, and white wine.",
+      "preparation_time": 10,
+      "cooking_time": 30,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Arborio rice", "quantity": 1, "unit": "cup"},
+        {"name": "Mushrooms", "quantity": 200, "unit": "grams"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Vegetable broth", "quantity": 4, "unit": "cups"},
+        {"name": "White wine", "quantity": 1/2, "unit": "cup"},
+        {"name": "Parmesan cheese", "quantity": 1/2, "unit": "cup"},
+        {"name": "Butter", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/2, "unit": "teaspoon"}
+      ],
+      "tags": ["Italian", "Risotto", "Creamy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Classic Beef Burger",
+      "description": "Juicy beef patty served on a toasted bun with lettuce, tomato, onion, and pickles.",
+      "preparation_time": 15,
+      "cooking_time": 10,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Ground beef", "quantity": 500, "unit": "grams"},
+        {"name": "Hamburger buns", "quantity": 4, "unit": "units"},
+        {"name": "Lettuce leaves", "quantity": 4, "unit": "leaves"},
+        {"name": "Tomato", "quantity": 1, "unit": "unit"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Pickles", "quantity": 4, "unit": "slices"},
+        {"name": "Ketchup", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Mustard", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/2, "unit": "teaspoon"}
+      ],
+      "tags": ["American", "Burger", "Beef"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Tiramisu",
+      "description": "Classic Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cheese.",
+      "preparation_time": 20,
+      "cooking_time": 0,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Ladyfingers", "quantity": 200, "unit": "grams"},
+        {"name": "Mascarpone cheese", "quantity": 250, "unit": "grams"},
+        {"name": "Eggs", "quantity": 3, "unit": "units"},
+        {"name": "Granulated sugar", "quantity": 1/2, "unit": "cup"},
+        {"name": "Espresso coffee", "quantity": 1, "unit": "cup"},
+        {"name": "Cocoa powder", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Marsala wine", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Italian", "Dessert", "Coffee"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Chicken Tikka Masala",
+      "description": "Tender chicken pieces marinated in yogurt and spices, cooked in a rich tomato-based sauce.",
+      "preparation_time": 30,
+      "cooking_time": 25,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Chicken thighs", "quantity": 500, "unit": "grams"},
+        {"name": "Yogurt", "quantity": 1/2, "unit": "cup"},
+        {"name": "Tomato puree", "quantity": 1, "unit": "cup"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Garlic", "quantity": 3, "unit": "cloves"},
+        {"name": "Ginger", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Garam masala", "quantity": 2, "unit": "teaspoons"},
+        {"name": "Cumin", "quantity": 1, "unit": "teaspoon"},
+        {"name": "Coriander", "quantity": 1, "unit": "teaspoon"},
+        {"name": "Heavy cream", "quantity": 1/4, "unit": "cup"},
+        {"name": "Butter", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Indian", "Chicken", "Spicy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Pesto Pasta",
+      "description": "Simple pasta dish tossed in a vibrant basil pesto sauce.",
+      "preparation_time": 10,
+      "cooking_time": 10,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Spaghetti", "quantity": 250, "unit": "grams"},
+        {"name": "Fresh basil leaves", "quantity": 2, "unit": "cups"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Pine nuts", "quantity": 1/4, "unit": "cup"},
+        {"name": "Parmesan cheese", "quantity": 1/2, "unit": "cup"},
+        {"name": "Olive oil", "quantity": 1/4, "unit": "cup"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Italian", "Pasta", "Vegetarian"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Chicken Caesar Salad",
+      "description": "Classic salad made with grilled chicken, romaine lettuce, croutons, and Caesar dressing.",
+      "preparation_time": 15,
+      "cooking_time": 15,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Chicken breast", "quantity": 2, "unit": "units"},
+        {"name": "Romaine lettuce", "quantity": 1, "unit": "head"},
+        {"name": "Croutons", "quantity": 1/2, "unit": "cup"},
+        {"name": "Parmesan cheese", "quantity": 1/4, "unit": "cup"},
+        {"name": "Caesar dressing", "quantity": 1/4, "unit": "cup"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Salad", "Chicken", "Quick"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Shrimp Scampi",
+      "description": "Garlicky shrimp sautéed in white wine and lemon butter sauce, served over pasta.",
+      "preparation_time": 10,
+      "cooking_time": 15,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Shrimp", "quantity": 400, "unit": "grams"},
+        {"name": "Linguine pasta", "quantity": 250, "unit": "grams"},
+        {"name": "Garlic", "quantity": 4, "unit": "cloves"},
+        {"name": "White wine", "quantity": 1/2, "unit": "cup"},
+        {"name": "Lemon juice", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Butter", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Parsley", "quantity": 1/4, "unit": "cup"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Seafood", "Pasta", "Garlic"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Vegetable Lasagna",
+      "description": "Layered pasta dish with ricotta cheese, marinara sauce, and a variety of vegetables.",
+      "preparation_time": 30,
+      "cooking_time": 45,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Lasagna noodles", "quantity": 9, "unit": "sheets"},
+        {"name": "Ricotta cheese", "quantity": 500, "unit": "grams"},
+        {"name": "Marinara sauce", "quantity": 2, "unit": "cups"},
+        {"name": "Zucchini", "quantity": 1, "unit": "unit"},
+        {"name": "Yellow squash", "quantity": 1, "unit": "unit"},
+        {"name": "Bell peppers (assorted colors)", "quantity": 2, "unit": "units"},
+        {"name": "Spinach", "quantity": 2, "unit": "cups"},
+        {"name": "Mozzarella cheese", "quantity": 200, "unit": "grams"},
+        {"name": "Parmesan cheese", "quantity": 1/4, "unit": "cup"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Italian", "Pasta", "Vegetarian"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Pad Thai",
+      "description": "Popular Thai stir-fried noodle dish with shrimp, tofu, peanuts, and tamarind sauce.",
+      "preparation_time": 20,
+      "cooking_time": 15,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Rice noodles", "quantity": 200, "unit": "grams"},
+        {"name": "Shrimp", "quantity": 200, "unit": "grams"},
+        {"name": "Firm tofu", "quantity": 150, "unit": "grams"},
+        {"name": "Bean sprouts", "quantity": 1, "unit": "cup"},
+        {"name": "Green onions", "quantity": 1/4, "unit": "cup"},
+        {"name": "Peanuts", "quantity": 1/4, "unit": "cup"},
+        {"name": "Eggs", "quantity": 2, "unit": "units"},
+        {"name": "Tamarind paste", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Fish sauce", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Brown sugar", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Vegetable oil", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Thai", "Noodles", "Spicy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Chocolate Chip Cookies",
+      "description": "Classic homemade cookies loaded with chocolate chips.",
+      "preparation_time": 15,
+      "cooking_time": 10,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "All-purpose flour", "quantity": 2, "unit": "cups"},
+        {"name": "Butter", "quantity": 1/2, "unit": "cup"},
+        {"name": "Brown sugar", "quantity": 1/2, "unit": "cup"},
+        {"name": "Granulated sugar", "quantity": 1/4, "unit": "cup"},
+        {"name": "Eggs", "quantity": 2, "unit": "units"},
+        {"name": "Vanilla extract", "quantity": 1, "unit": "teaspoon"},
+        {"name": "Baking soda", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Chocolate chips", "quantity": 1, "unit": "cup"}
+      ],
+      "tags": ["Dessert", "Cookies", "Chocolate"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Vegetable Curry",
+      "description": "Hearty vegetarian curry loaded with assorted vegetables and aromatic spices.",
+      "preparation_time": 20,
+      "cooking_time": 25,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Potatoes", "quantity": 2, "unit": "units"},
+        {"name": "Carrots", "quantity": 2, "unit": "units"},
+        {"name": "Cauliflower florets", "quantity": 1, "unit": "cup"},
+        {"name": "Green peas", "quantity": 1/2, "unit": "cup"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Tomatoes", "quantity": 2, "unit": "units"},
+        {"name": "Coconut milk", "quantity": 1, "unit": "can"},
+        {"name": "Curry powder", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Ginger", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Garlic", "quantity": 3, "unit": "cloves"},
+        {"name": "Vegetable oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"}
+      ],
+      "tags": ["Curry", "Vegetarian", "Spicy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Honey Garlic Salmon",
+      "description": "Pan-seared salmon fillets glazed with honey garlic sauce.",
+      "preparation_time": 10,
+      "cooking_time": 15,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Salmon fillets", "quantity": 4, "unit": "units"},
+        {"name": "Honey", "quantity": 1/4, "unit": "cup"},
+        {"name": "Soy sauce", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Garlic", "quantity": 3, "unit": "cloves"},
+        {"name": "Lemon juice", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Seafood", "Salmon", "Quick"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Beef Tacos",
+      "description": "Savory tacos filled with seasoned ground beef, lettuce, cheese, and salsa.",
+      "preparation_time": 20,
+      "cooking_time": 15,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Ground beef", "quantity": 500, "unit": "grams"},
+        {"name": "Taco shells", "quantity": 8, "unit": "units"},
+        {"name": "Lettuce", "quantity": 1, "unit": "cup"},
+        {"name": "Cheddar cheese", "quantity": 1/2, "unit": "cup"},
+        {"name": "Tomato", "quantity": 1, "unit": "unit"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Salsa", "quantity": 1/2, "unit": "cup"},
+        {"name": "Taco seasoning", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Vegetable oil", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Mexican", "Tacos", "Beef"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Mango Sticky Rice",
+      "description": "Sweet Thai dessert made with glutinous rice and fresh mango slices, drizzled with coconut sauce.",
+      "preparation_time": 30,
+      "cooking_time": 25,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Glutinous rice", "quantity": 1, "unit": "cup"},
+        {"name": "Ripe mangoes", "quantity": 2, "unit": "units"},
+        {"name": "Coconut milk", "quantity": 1, "unit": "can"},
+        {"name": "Sugar", "quantity": 1/4, "unit": "cup"},
+        {"name": "Salt", "quantity": 1/4, "unit": "teaspoon"},
+        {"name": "Sesame seeds", "quantity": 2, "unit": "tablespoons"}
+      ],
+      "tags": ["Thai", "Dessert", "Sweet"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Quinoa Salad",
+      "description": "Nutritious salad made with cooked quinoa, cherry tomatoes, cucumbers, and feta cheese.",
+      "preparation_time": 15,
+      "cooking_time": 15,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Quinoa", "quantity": 1, "unit": "cup"},
+        {"name": "Cherry tomatoes", "quantity": 1, "unit": "cup"},
+        {"name": "Cucumber", "quantity": 1, "unit": "unit"},
+        {"name": "Red onion", "quantity": 1/4, "unit": "cup"},
+        {"name": "Feta cheese", "quantity": 1/2, "unit": "cup"},
+        {"name": "Fresh parsley", "quantity": 1/4, "unit": "cup"},
+        {"name": "Lemon juice", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Salad", "Quinoa", "Healthy"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "French Toast",
+      "description": "Classic breakfast dish made with slices of bread soaked in a mixture of eggs and milk, then fried until golden brown.",
+      "preparation_time": 10,
+      "cooking_time": 10,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Bread slices", "quantity": 4, "unit": "units"},
+        {"name": "Eggs", "quantity": 2, "unit": "units"},
+        {"name": "Milk", "quantity": 1/2, "unit": "cup"},
+        {"name": "Vanilla extract", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Cinnamon", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Butter", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Maple syrup", "quantity": 1/4, "unit": "cup"}
+      ],
+      "tags": ["Breakfast", "French", "Quick"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Chicken Noodle Soup",
+      "description": "Comforting soup made with chicken, vegetables, and egg noodles in a flavorful broth.",
+      "preparation_time": 15,
+      "cooking_time": 30,
+      "difficulty_level": "Easy",
+      "ingredients": [
+        {"name": "Chicken breast", "quantity": 2, "unit": "units"},
+        {"name": "Carrots", "quantity": 2, "unit": "units"},
+        {"name": "Celery stalks", "quantity": 2, "unit": "units"},
+        {"name": "Onion", "quantity": 1, "unit": "unit"},
+        {"name": "Egg noodles", "quantity": 200, "unit": "grams"},
+        {"name": "Chicken broth", "quantity": 4, "unit": "cups"},
+        {"name": "Garlic", "quantity": 2, "unit": "cloves"},
+        {"name": "Bay leaf", "quantity": 1, "unit": "unit"},
+        {"name": "Olive oil", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Salt", "quantity": 1/2, "unit": "teaspoon"},
+        {"name": "Black pepper", "quantity": 1/4, "unit": "teaspoon"}
+      ],
+      "tags": ["Soup", "Chicken", "Comfort Food"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Sushi Rolls",
+      "description": "Homemade sushi rolls filled with fresh fish, avocado, and cucumber, wrapped in seaweed and sushi rice.",
+      "preparation_time": 30,
+      "cooking_time": 0,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Sushi rice", "quantity": 2, "unit": "cups"},
+        {"name": "Nori seaweed sheets", "quantity": 4, "unit": "sheets"},
+        {"name": "Sashimi-grade fish (tuna, salmon)", "quantity": 200, "unit": "grams"},
+        {"name": "Avocado", "quantity": 1, "unit": "unit"},
+        {"name": "Cucumber", "quantity": 1/2, "unit": "unit"},
+        {"name": "Soy sauce", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Wasabi", "quantity": 1, "unit": "tablespoon"},
+        {"name": "Pickled ginger", "quantity": 1/4, "unit": "cup"},
+        {"name": "Rice vinegar", "quantity": 2, "unit": "tablespoons"},
+        {"name": "Sugar", "quantity": 1, "unit": "tablespoon"}
+      ],
+      "tags": ["Japanese", "Sushi", "Seafood"]
+    }
+  },
+  {
+    "recipe": {
+      "title": "Spaghetti Carbonara",
+      "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper.",
+      "preparation_time": 10,
+      "cooking_time": 15,
+      "difficulty_level": "Intermediate",
+      "ingredients": [
+        {"name": "Spaghetti", "quantity": 200, "unit": "grams"},
+        {"name": "Pancetta", "quantity": 100, "unit": "grams"},
+        {"name": "Eggs", "quantity": 2, "unit": "units"},
+        {"name": "Parmesan cheese", "quantity": 50, "unit": "grams"},
+        {"name": "Black pepper", "quantity": 1, "unit": "teaspoon"},
+        {"name": "Salt", "quantity": 1, "unit": "pinch"}
+      ],
+      "tags": ["Italian", "Pasta", "Savory"]
+    }
+  }      
+]
+  
