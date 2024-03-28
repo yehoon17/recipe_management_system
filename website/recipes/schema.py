@@ -1,7 +1,12 @@
 import graphene
 from graphene_django.types import DjangoObjectType
-from .models import Recipe, Ingredient, Tag
+from .models import Recipe, Ingredient, Tag, User
 
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = User
+        
 class RecipeType(DjangoObjectType):
     class Meta:
         model = Recipe
@@ -28,6 +33,17 @@ class Query(graphene.ObjectType):
     def resolve_all_tags(self, info, **kwargs):
         return Tag.objects.all()
 
+class CreateUser(graphene.Mutation):
+    class Arguments:
+        username = graphene.String(required=True)
+        email = graphene.String(required=True)
+        password = graphene.String(required=True)
+
+    user = graphene.Field(UserType)
+
+    def mutate(self, info, username, email, password):
+        user = User.objects.create_user(username=username, email=email, password=password)
+        return CreateUser(user=user)
 
 class CreateRecipe(graphene.Mutation):
     class Arguments:
@@ -47,6 +63,7 @@ class CreateRecipe(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     create_recipe = CreateRecipe.Field()
+    create_user = CreateUser.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
 
