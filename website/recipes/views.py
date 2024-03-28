@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def homepage(request):
-    featured_recipes = Recipe.objects.all()[:5]  
+    featured_recipes = Recipe.objects.all()[:3]  
     tags = Tag.objects.all() 
     
     context = {

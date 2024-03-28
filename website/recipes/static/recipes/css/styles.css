@@ -68,3 +68,30 @@ section {
     height: auto; /* Preserve the aspect ratio of the image */
 }
 
+.featured-recipes {
+    /* Add styles as needed */
+}
+
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recipe-item {
+    width: 30%; /* Adjust as needed based on the number of recipes to display */
+    margin: 10px; /* Adjust spacing between items */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-item img {
+    max-width: 100%;
+    max-height: 100%; /* Ensure the image does not exceed its original height */
+}
+
+.recipe-item h3 {
+    margin-top: 5px; /* Add space below the image */
+    text-align: center;
+}
