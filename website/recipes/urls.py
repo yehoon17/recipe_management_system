@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from graphene_django.views import GraphQLView
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
@@ -13,4 +14,7 @@ urlpatterns = [
     path('recipe/create/', views.create_recipe, name='create_recipe'),
     path('recipe/<int:pk>/edit/', views.edit_recipe, name='edit_recipe'),
     path('recipe/<int:pk>/delete/', views.delete_recipe, name='delete_recipe'),
+
+    
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
