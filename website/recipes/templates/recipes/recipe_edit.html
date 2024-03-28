@@ -35,7 +35,8 @@
 
     <label for="tag">Tag:</label>
     <input type="text" id="tag" name="tag" value="{% for tag in recipe.recipetag_set.all %}{{ tag.tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}">
-
+    <span class="tag-description">(Separate tags with commas)</span>
+    
     <button type="submit">Save Changes</button>
   </form>
 </main>
