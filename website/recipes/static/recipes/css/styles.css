@@ -58,3 +58,13 @@ section {
     margin-left: 5px;
 }
 
+.image-container {
+    max-width: 30%; /* Limit the maximum width of the container */
+    overflow: auto; /* Hide any overflow if the image exceeds the maximum dimensions */
+}
+
+.image-container img {
+    max-width: 100%; /* Make the image fit within the container */
+    height: auto; /* Preserve the aspect ratio of the image */
+}
+
