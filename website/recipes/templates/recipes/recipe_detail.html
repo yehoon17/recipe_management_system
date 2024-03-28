@@ -11,10 +11,18 @@
 
     <h3>Ingredients:</h3>
     <ul>
-        {% for ingredient in recipe.ingredients.all %}
-        <li>{{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
+        {% for ingredient in ingredients %}
+        <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
         {% endfor %}
     </ul>
+
+    <h3>Tags:</h3>
+    <ul>
+        {% for tag in recipe.recipetag_set.all %}
+        <li>{{ tag.category.name }}</li>
+        {% endfor %}
+    </ul>
+
     {% if can_edit %}
     <a href="{% url 'edit_recipe' pk=recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
     <form action="{% url 'delete_recipe' pk=recipe.pk %}" method="post" class="d-inline">
