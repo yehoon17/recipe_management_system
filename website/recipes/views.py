@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Recipe, Tag, Ingredient
+from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm
@@ -55,6 +55,27 @@ def create_recipe(request):
             recipe = form.save(commit=False)
             recipe.user = request.user  # Assign the current user to the recipe
             recipe.save()
+
+            # Handle ingredient submission
+            ingredient_names = request.POST.getlist('ingredient_name[]')
+            ingredient_quantities = request.POST.getlist('ingredient_quantity[]')
+            ingredient_units = request.POST.getlist('ingredient_unit[]')
+
+            for name, quantity, unit in zip(ingredient_names, ingredient_quantities, ingredient_units):
+                # Create or get Ingredient object
+                ingredient, created = Ingredient.objects.get_or_create(name=name)
+                # Create RecipeIngredient object and associate it with the recipe
+                RecipeIngredient.objects.create(recipe=recipe, ingredient=ingredient, quantity=quantity, unit=unit)
+
+            # Handle tag submission
+            tag_input = request.POST.get('tag')
+            tag_names = [tag.strip() for tag in tag_input.split(',') if tag.strip()]
+            for tag_name in tag_names:
+                # Create or get Tag object
+                tag, created = Tag.objects.get_or_create(name=tag_name)
+                # Associate the tag with the recipe
+                RecipeTag.objects.create(recipe=recipe, tag=tag)
+
             return redirect('recipe_detail', pk=recipe.pk)  # Redirect to the recipe detail page
     else:
         form = RecipeForm()
@@ -71,8 +92,12 @@ def edit_recipe(request, pk):
             form.save()
             return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
     else:
+        # Initialize the form with instance data including ingredients
         form = RecipeForm(instance=recipe)
-    return render(request, 'recipes/recipe_edit.html', {'form': form})
+        # Retrieve ingredients associated with the recipe
+        ingredients = recipe.recipeingredient_set.all()
+
+    return render(request, 'recipes/recipe_edit.html', {'recipe': recipe, 'ingredients': ingredients, 'form': form})
 
 @login_required
 def delete_recipe(request, pk):
