@@ -13,6 +13,7 @@ class Recipe(models.Model):
     preparation_time = models.PositiveIntegerField()  # in minutes
     cooking_time = models.PositiveIntegerField()  # in minutes
     difficulty_level = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='recipe_images/', blank=True, null=True)
 
     def __str__(self):
         return self.title
