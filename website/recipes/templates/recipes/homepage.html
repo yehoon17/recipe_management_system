@@ -2,7 +2,7 @@
 {% block content %}
 <main>
     <section class="featured-recipes">
-        <h2>Featured Recipes</h2>
+        <h2><a href="{% url 'all_recipes' %}">Featured Recipes</a></h2>
         <div class="recipe-list">
             {% for recipe in featured_recipes %}
                 <div class="recipe-item">
