@@ -50,7 +50,8 @@ def recipe_detail(request, pk):
 @login_required
 def create_recipe(request):
     if request.method == 'POST':
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
+
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user  # Assign the current user to the recipe
@@ -86,8 +87,9 @@ def edit_recipe(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     if request.user != recipe.user:  # Check if the current user is the owner of the recipe
         return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page if user doesn't have permission
+    
     if request.method == 'POST':
-        form = RecipeForm(request.POST, instance=recipe)
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
             form.save()
             return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
@@ -97,7 +99,9 @@ def edit_recipe(request, pk):
         # Retrieve ingredients associated with the recipe
         ingredients = recipe.recipeingredient_set.all()
 
-    return render(request, 'recipes/recipe_edit.html', {'recipe': recipe, 'ingredients': ingredients, 'form': form})
+    context = {'recipe': recipe, 'ingredients': ingredients, 'form': form}
+
+    return render(request, 'recipes/recipe_edit.html', context)
 
 @login_required
 def delete_recipe(request, pk):
