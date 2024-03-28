@@ -92,8 +92,12 @@ def edit_recipe(request, pk):
             form.save()
             return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
     else:
+        # Initialize the form with instance data including ingredients
         form = RecipeForm(instance=recipe)
-    return render(request, 'recipes/recipe_edit.html', {'form': form})
+        # Retrieve ingredients associated with the recipe
+        ingredients = recipe.recipeingredient_set.all()
+
+    return render(request, 'recipes/recipe_edit.html', {'recipe': recipe, 'ingredients': ingredients, 'form': form})
 
 @login_required
 def delete_recipe(request, pk):
