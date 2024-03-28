@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Recipe, Category
+from .models import Recipe, Tag
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm
@@ -8,11 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
-    categories = Category.objects.all() 
+    tags = Tag.objects.all() 
     
     context = {
         'featured_recipes': featured_recipes,
-        'categories': categories,
+        'tags': tags,
     }
     
     return render(request, 'recipes/homepage.html', context)
