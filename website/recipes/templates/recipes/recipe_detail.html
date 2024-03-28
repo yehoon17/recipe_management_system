@@ -3,24 +3,46 @@
 
 {% block content %}
 <main>
-    <h2>{{ recipe.title }}</h2>
-    <p><strong>Description:</strong> {{ recipe.description }}</p>
-    <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }} minutes</p>
-    <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
-    <p><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
+    <div>
+        <h2>{{ recipe.title }}</h2>
 
-    <h3>Ingredients:</h3>
-    <ul>
-        {% for ingredient in recipe.ingredients.all %}
-        <li>{{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
-        {% endfor %}
-    </ul>
+        {% if recipe.image %}
+        <div class="image-container">
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+        </div>        
+        {% endif %}
+
+        <p><strong>Description:</strong> {{ recipe.description }}</p>
+        <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }} minutes</p>
+        <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
+        <p><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
+
+        <h3>Ingredients:</h3>
+        <ul>
+            {% for ingredient in ingredients %}
+            <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Tags:</h3>
+        <ul>
+            {% for tag in recipe.recipetag_set.all %}
+            <li>{{ tag.tag.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
     {% if can_edit %}
-    <a href="{% url 'edit_recipe' pk=recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
-    <form action="{% url 'delete_recipe' pk=recipe.pk %}" method="post" class="d-inline">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Delete Recipe</button>
-    </form>
+    <div>
+        <a href="{% url 'edit_recipe' pk=recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
+    </div>
+    <div>
+        <br>
+        <form action="{% url 'delete_recipe' pk=recipe.pk %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete Recipe</button>
+        </form>
+    </div>    
     {% endif %}
 </main>
   

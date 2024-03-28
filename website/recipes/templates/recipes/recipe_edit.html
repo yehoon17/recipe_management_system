@@ -4,9 +4,39 @@
 {% block content %}
 <main>
   <h2>Edit Recipe</h2>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+
+    <h3>Ingredients:</h3>
+    <div>
+      <table id="ingredients_table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in ingredients %}
+            <tr>
+                <td><input type="text" name="ingredient_name[]" class="ingredient-name" value="{{ ingredient.ingredient.name }}"></td>
+                <td><input type="text" name="ingredient_quantity[]" class="ingredient-quantity" value="{{ ingredient.quantity }}"></td>
+                <td><input type="text" name="ingredient_unit[]" class="ingredient-unit" value="{{ ingredient.unit }}"></td>
+                <td><button type="button" class="remove-row">Remove</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <button type="button" id="add-row">Add Ingredient</button>
+    </div>
+
+    <label for="tag">Tag:</label>
+    <input type="text" id="tag" name="tag" value="{% for tag in recipe.recipetag_set.all %}{{ tag.tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}">
+    <span class="tag-description">(Separate tags with commas)</span>
+    
     <button type="submit">Save Changes</button>
   </form>
 </main>

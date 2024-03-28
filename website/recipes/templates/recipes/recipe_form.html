@@ -4,9 +4,36 @@
 {% block content %}
 <main>
   <h2>Create Recipe</h2>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+
+    <label for="tag">Tag:</label>
+    <input type="text" id="tag" name="tag">
+    <span class="tag-description">(Separate tags with commas)</span>
+
+    <div>
+      <table id="ingredients_table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="ingredient_name[]" class="ingredient-name"></td>
+                <td><input type="text" name="ingredient_quantity[]" class="ingredient-quantity"></td>
+                <td><input type="text" name="ingredient_unit[]" class="ingredient-unit"></td>
+                <td><button type="button" class="remove-row">Remove</button></td>
+            </tr>
+        </tbody>
+      </table>
+      <button type="button" id="add-row">Add Ingredient</button>
+    </div>
+
     <button type="submit">Submit</button>
   </form>
 </main>
