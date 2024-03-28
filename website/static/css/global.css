@@ -62,4 +62,5 @@ main {
     padding-top: 10px; /* Add padding at the top of the main content */
     padding-bottom: 30px; /* Add padding at the bottom of the main content */
     padding-left: 30px;
+    padding-right: 30px;
 }
