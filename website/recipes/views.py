@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Recipe, Tag
+from .models import Recipe, Tag, Ingredient
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm
@@ -37,8 +37,15 @@ def recipe_detail(request, pk):
     if request.user == recipe.user:  # Check if the current user is the owner of the recipe
         can_edit = True
     else:
-        can_edit = False
-    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe, 'can_edit': can_edit})
+        can_edit = False 
+        
+    # Retrieve ingredients associated with the recipe
+    ingredients = recipe.recipeingredient_set.all()
+
+    context = {'recipe': recipe, 'can_edit': can_edit, 'ingredients': ingredients}
+
+    return render(request, 'recipes/recipe_detail.html', context)
+
 
 @login_required
 def create_recipe(request):
