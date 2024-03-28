@@ -17,24 +17,27 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
-
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     unit = models.CharField(max_length=50)
-    recipes = models.ManyToManyField(Recipe, related_name='ingredients')
-
-    def __str__(self):
-        return self.name
     
-
-class Category(models.Model):
+class Tag(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
 
     def __str__(self):
         return self.name
-    
+
+class RecipeTag(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    category = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -46,7 +49,6 @@ class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     value = models.IntegerField()  # Rating value (e.g., 1 to 5)
-
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
