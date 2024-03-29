@@ -29,13 +29,16 @@ class RecipeTagType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    all_users = graphene.List(UserType)
+    all_users = graphene.List(UserType, is_superuser=graphene.Boolean())
     all_recipes = graphene.List(RecipeType)
     all_ingredients = graphene.List(IngredientType)
     all_tags = graphene.List(TagType)
     
-    def resolve_all_users(self, info, **kwargs):
-        return User.objects.all()
+    def resolve_all_users(self, info, is_superuser=None):
+        queryset = User.objects.all()
+        if is_superuser is not None:
+            queryset = queryset.filter(is_superuser=is_superuser)
+        return queryset
     
     def resolve_all_recipes(self, info, **kwargs):
         return Recipe.objects.all()
