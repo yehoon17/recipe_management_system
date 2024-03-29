@@ -1,6 +1,6 @@
 import graphene
 from graphene_django.types import DjangoObjectType
-from .models import Recipe, Ingredient, Tag, User
+from .models import Recipe, Ingredient, Tag, User, RecipeIngredient, RecipeTag 
 
 
 class UserType(DjangoObjectType):
@@ -15,14 +15,27 @@ class IngredientType(DjangoObjectType):
     class Meta:
         model = Ingredient
 
+class RecipeIngredientType(DjangoObjectType):
+    class Meta:
+        model = RecipeIngredient
+
 class TagType(DjangoObjectType):
     class Meta:
         model = Tag
 
+class RecipeTagType(DjangoObjectType):
+    class Meta:
+        model = RecipeTag
+
+
 class Query(graphene.ObjectType):
+    all_users = graphene.List(UserType)
     all_recipes = graphene.List(RecipeType)
     all_ingredients = graphene.List(IngredientType)
     all_tags = graphene.List(TagType)
+    
+    def resolve_all_users(self, info, **kwargs):
+        return User.objects.all()
     
     def resolve_all_recipes(self, info, **kwargs):
         return Recipe.objects.all()
@@ -32,6 +45,7 @@ class Query(graphene.ObjectType):
     
     def resolve_all_tags(self, info, **kwargs):
         return Tag.objects.all()
+
 
 class CreateUser(graphene.Mutation):
     class Arguments:
@@ -47,6 +61,7 @@ class CreateUser(graphene.Mutation):
 
 class CreateRecipe(graphene.Mutation):
     class Arguments:
+        user_id = graphene.Int()
         title = graphene.String()
         description = graphene.String()
         preparation_time = graphene.Int()
@@ -56,14 +71,23 @@ class CreateRecipe(graphene.Mutation):
     
     recipe = graphene.Field(RecipeType)
 
-    def mutate(self, info, title, description, preparation_time, cooking_time, difficulty_level, image):
-        # Your logic to create a new recipe with provided data
-        new_recipe = Recipe.objects.create(title=title, description=description, preparation_time=preparation_time, cooking_time=cooking_time, difficulty_level=difficulty_level, image=image)
+    def mutate(self, info, user_id, title, description, preparation_time, cooking_time, difficulty_level, image):
+        user = User.objects.get(pk=user_id)
+
+        new_recipe = Recipe.objects.create(
+            user=user,
+            title=title, 
+            description=description, 
+            preparation_time=preparation_time, 
+            cooking_time=cooking_time, 
+            difficulty_level=difficulty_level, 
+            image=image
+            )
         return CreateRecipe(recipe=new_recipe)
+
 
 class Mutation(graphene.ObjectType):
     create_recipe = CreateRecipe.Field()
     create_user = CreateUser.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
-
