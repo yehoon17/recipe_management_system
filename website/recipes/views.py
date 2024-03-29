@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag
+from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag, Rating
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Avg
+
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
@@ -53,6 +55,7 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     if request.user == recipe.user:  # Check if the current user is the owner of the recipe
@@ -63,7 +66,14 @@ def recipe_detail(request, pk):
     # Retrieve ingredients associated with the recipe
     ingredients = recipe.recipeingredient_set.all()
 
-    context = {'recipe': recipe, 'can_edit': can_edit, 'ingredients': ingredients}
+    average_rating = recipe.rating_set.aggregate(Avg('value'))['value__avg']
+
+    context = {
+        'recipe': recipe,
+        'can_edit': can_edit, 
+        'ingredients': ingredients,
+        'average_rating': average_rating,
+        }
 
     return render(request, 'recipes/recipe_detail.html', context)
 
@@ -163,3 +173,16 @@ def all_recipes(request):
     except EmptyPage:
         recipes = paginator.page(paginator.num_pages)
     return render(request, 'recipes/all_recipes.html', {'recipes': recipes})
+
+def rate_recipe(request, recipe_id):
+    if request.method == 'POST':
+        recipe = get_object_or_404(Recipe, pk=recipe_id)
+        value = request.POST.get('rating')
+        if value and 1 <= int(value) <= 5:
+            if request.user.is_authenticated:  # Check if user is logged in
+                rating = Rating.objects.create(recipe=recipe, user=request.user, value=value)
+                return redirect('recipe_detail', pk=recipe_id)
+            else:
+                # Redirect to login page if user is not logged in
+                return redirect('login')  # Assuming 'login' is the name of your login URL pattern
+    return redirect('homepage')
