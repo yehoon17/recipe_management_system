@@ -1,7 +1,7 @@
 import json
 import random
 from django.core.management.base import BaseCommand
-from models import User, Recipe, Ingredient, RecipeIngredient, Tag, RecipeTag
+from recipes.models import User, Recipe, Ingredient, RecipeIngredient, Tag, RecipeTag
 
 random.seed(42)
 
