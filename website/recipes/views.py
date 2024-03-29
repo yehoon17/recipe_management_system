@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
-from .forms import RecipeForm
+from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import JsonResponse
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
@@ -142,3 +143,14 @@ def all_recipes(request):
     except EmptyPage:
         recipes = paginator.page(paginator.num_pages)
     return render(request, 'recipes/all_recipes.html', {'recipes': recipes})
+
+def search_recipes(request):
+    query = request.GET.get('query')
+    if query:
+        search_results = Recipe.objects.filter(title__icontains=query)
+        # You can perform additional filtering or sorting here as needed
+        search_results_data = [{'title': recipe.title} for recipe in search_results]
+        return JsonResponse({'search_results': search_results_data})
+    else:
+        return JsonResponse({'error': 'No search query provided'})
+    

@@ -22,3 +22,7 @@ class RecipeForm(forms.ModelForm):
             'difficulty_level', 
             'image',
             ]
+
+
+class RecipeSearchForm(forms.Form):
+    query = forms.CharField(label='Search for recipes', max_length=100)

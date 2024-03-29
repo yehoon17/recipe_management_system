@@ -14,10 +14,16 @@
             {% endfor %}
         </div>
     </section>
-    
+
     <section class="search">
         <h2>Search Recipes</h2>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Enter your search query...">
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-results"></div>
     </section>
+    
     <section class="tags">
         <h2>Popular tags</h2>
         <ul>
