@@ -15,6 +15,10 @@ class RecipeType(DjangoObjectType):
 class IngredientType(DjangoObjectType):
     class Meta:
         model = Ingredient
+        
+class RecipeIngredientType(DjangoObjectType):
+    class Meta:
+        model = RecipeIngredient
 
 class TagType(DjangoObjectType):
     class Meta:
@@ -28,6 +32,7 @@ class Query(graphene.ObjectType):
     all_tags = graphene.List(TagType)
     recipes_by_title = graphene.List(RecipeType, title=graphene.String())
     recipes_sorted_by_cooking_time = graphene.List(RecipeType)
+    recipes_by_ingredient = graphene.List(RecipeType, ingredient_name=graphene.String())
     
     def resolve_all_users(self, info, is_superuser=None):
         queryset = User.objects.all()
@@ -49,6 +54,10 @@ class Query(graphene.ObjectType):
     
     def resolve_recipes_sorted_by_cooking_time(self, info, **kwargs):
         return Recipe.objects.all().order_by('cooking_time')
+    
+    def resolve_recipes_by_ingredient(self, info, ingredient_name):
+        return Recipe.objects.filter(recipeingredient__ingredient__name__icontains=ingredient_name)
+    
     
 class CreateUser(graphene.Mutation):
     class Arguments:
