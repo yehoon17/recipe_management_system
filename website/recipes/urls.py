@@ -17,6 +17,8 @@ urlpatterns = [
     path('recipe/<int:pk>/edit/', views.edit_recipe, name='edit_recipe'),
     path('recipe/<int:pk>/delete/', views.delete_recipe, name='delete_recipe'),
     path('all-recipes/', views.all_recipes, name='all_recipes'),
+    
+    path('search-recipes/', views.search_recipes, name='search_recipes'),
 
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]

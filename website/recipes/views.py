@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
-from .forms import RecipeForm
+from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -10,12 +10,29 @@ def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
     tags = Tag.objects.all() [:10] 
     
+    form = RecipeSearchForm(request.GET)
+
     context = {
         'featured_recipes': featured_recipes,
         'tags': tags,
+        'form': form, 
     }
     
     return render(request, 'recipes/homepage.html', context)
+
+
+
+def search_recipes(request):
+    if request.method == 'GET':
+        form = RecipeSearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            # Call a function to perform the search
+            search_results = Recipe.objects.filter(title__icontains=query)
+            return render(request, 'recipes/search_results.html', {'search_results': search_results})
+    else:
+        form = RecipeSearchForm()
+    return render(request, 'recipes/search.html', {'form': form})
 
 
 class CustomLoginView(LoginView):

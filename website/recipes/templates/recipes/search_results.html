@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Search Results</h2>
+    <div class="recipe-list">
+        {% if search_results %}
+            {% for recipe in search_results %}
+                <div class="recipe-item">
+                    <a href="{% url 'recipe_detail' pk=recipe.pk %}">
+                        {% if recipe.image %}
+                            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+                        {% else %}
+                            <img src="{% static 'recipe_images/default_image.jpg' %}" alt="{{ recipe.title }}">
+                        {% endif %}
+                        <h3>{{ recipe.title }}</h3>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
