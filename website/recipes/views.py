@@ -166,13 +166,15 @@ def all_recipes(request):
         recipes = paginator.page(paginator.num_pages)
     return render(request, 'recipes/all_recipes.html', {'recipes': recipes})
 
-@login_required
 def rate_recipe(request, recipe_id):
     if request.method == 'POST':
         recipe = get_object_or_404(Recipe, pk=recipe_id)
         value = request.POST.get('rating')
         if value and 1 <= int(value) <= 5:
-            rating = Rating.objects.create(recipe=recipe, user=request.user, value=value)
-            return redirect('recipe_detail', pk=recipe_id)
-    return redirect('homepage') 
-
+            if request.user.is_authenticated:  # Check if user is logged in
+                rating = Rating.objects.create(recipe=recipe, user=request.user, value=value)
+                return redirect('recipe_detail', pk=recipe_id)
+            else:
+                # Redirect to login page if user is not logged in
+                return redirect('login')  # Assuming 'login' is the name of your login URL pattern
+    return redirect('homepage')
