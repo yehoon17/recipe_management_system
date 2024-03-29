@@ -14,10 +14,15 @@
             {% endfor %}
         </div>
     </section>
-    
+
     <section class="search">
         <h2>Search Recipes</h2>
+        <form method="GET" action="{% url 'search_recipes' %}">
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
     </section>
+
     <section class="tags">
         <h2>Popular tags</h2>
         <ul>
