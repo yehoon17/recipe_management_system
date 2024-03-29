@@ -34,7 +34,7 @@ class Command(BaseCommand):
             ingredient_, created = Ingredient.objects.get_or_create(name=ingredient['name'])
             RecipeIngredient.objects.create(
                 recipe=recipe, 
-                ingredient=ingredient, 
+                ingredient=ingredient_, 
                 quantity=ingredient['quantity'], 
                 unit=ingredient['unit']
                 )
