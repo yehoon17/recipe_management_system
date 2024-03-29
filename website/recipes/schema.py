@@ -88,9 +88,24 @@ class CreateRecipe(graphene.Mutation):
             )
         return CreateRecipe(recipe=new_recipe)
 
+class UpdateRecipe(graphene.Mutation):
+    class Arguments:
+        id = graphene.Int(required=True)
+        new_title = graphene.String()
+
+    recipe = graphene.Field(RecipeType)
+
+    def mutate(self, info, id, new_title):
+        recipe = Recipe.objects.get(id=id)
+        recipe.title = new_title
+        recipe.save()
+        return UpdateRecipe(recipe=recipe)
+    
 
 class Mutation(graphene.ObjectType):
-    create_recipe = CreateRecipe.Field()
     create_user = CreateUser.Field()
+    create_recipe = CreateRecipe.Field()
+    update_recipe = UpdateRecipe.Field()
+
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
