@@ -1,5 +1,6 @@
 import graphene
 from graphene_django.types import DjangoObjectType
+from graphene_file_upload.scalars import Upload
 from .models import Recipe, Ingredient, Tag, User, RecipeIngredient, RecipeTag 
 
 
@@ -70,7 +71,7 @@ class CreateRecipe(graphene.Mutation):
         preparation_time = graphene.Int()
         cooking_time = graphene.Int()
         difficulty_level = graphene.String()
-        image = graphene.String()
+        image = Upload(required=False)
     
     recipe = graphene.Field(RecipeType)
 

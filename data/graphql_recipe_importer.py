@@ -42,7 +42,7 @@ def create_recipe(recipe, user_id):
                 difficultyLevel: "%s"
                 preparationTime: %d
                 title: "%s"
-                image: ""
+                image: null
             ) {
                 recipe {
                 id
