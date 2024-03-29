@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipes.apps.RecipesConfig',	
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,9 @@ DATABASES = {
     }
 }
 
+GRAPHENE = {
+    'SCHEMA': 'recipes.schema.schema',  # Replace 'myproject' with your project name
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
