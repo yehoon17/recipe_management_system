@@ -15,7 +15,7 @@ class RecipeType(DjangoObjectType):
 class IngredientType(DjangoObjectType):
     class Meta:
         model = Ingredient
-
+        
 class RecipeIngredientType(DjangoObjectType):
     class Meta:
         model = RecipeIngredient
@@ -24,16 +24,15 @@ class TagType(DjangoObjectType):
     class Meta:
         model = Tag
 
-class RecipeTagType(DjangoObjectType):
-    class Meta:
-        model = RecipeTag
-
 
 class Query(graphene.ObjectType):
     all_users = graphene.List(UserType, is_superuser=graphene.Boolean())
     all_recipes = graphene.List(RecipeType)
     all_ingredients = graphene.List(IngredientType)
     all_tags = graphene.List(TagType)
+    recipes_by_title = graphene.List(RecipeType, title=graphene.String())
+    recipes_sorted_by_cooking_time = graphene.List(RecipeType)
+    recipes_by_ingredient = graphene.List(RecipeType, ingredient_name=graphene.String())
     
     def resolve_all_users(self, info, is_superuser=None):
         queryset = User.objects.all()
@@ -50,7 +49,16 @@ class Query(graphene.ObjectType):
     def resolve_all_tags(self, info, **kwargs):
         return Tag.objects.all()
 
-
+    def resolve_recipes_by_title(self, info, title):
+        return Recipe.objects.filter(title__icontains=title)
+    
+    def resolve_recipes_sorted_by_cooking_time(self, info, **kwargs):
+        return Recipe.objects.all().order_by('cooking_time')
+    
+    def resolve_recipes_by_ingredient(self, info, ingredient_name):
+        return Recipe.objects.filter(recipeingredient__ingredient__name__icontains=ingredient_name)
+    
+    
 class CreateUser(graphene.Mutation):
     class Arguments:
         username = graphene.String(required=True)
@@ -89,9 +97,24 @@ class CreateRecipe(graphene.Mutation):
             )
         return CreateRecipe(recipe=new_recipe)
 
+class UpdateRecipe(graphene.Mutation):
+    class Arguments:
+        id = graphene.Int(required=True)
+        new_title = graphene.String()
+
+    recipe = graphene.Field(RecipeType)
+
+    def mutate(self, info, id, new_title):
+        recipe = Recipe.objects.get(id=id)
+        recipe.title = new_title
+        recipe.save()
+        return UpdateRecipe(recipe=recipe)
+    
 
 class Mutation(graphene.ObjectType):
-    create_recipe = CreateRecipe.Field()
     create_user = CreateUser.Field()
+    create_recipe = CreateRecipe.Field()
+    update_recipe = UpdateRecipe.Field()
+
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
