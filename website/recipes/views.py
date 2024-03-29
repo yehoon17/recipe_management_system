@@ -20,8 +20,6 @@ def homepage(request):
     
     return render(request, 'recipes/homepage.html', context)
 
-
-
 def search_recipes(request):
     if request.method == 'GET':
         form = RecipeSearchForm(request.GET)
@@ -33,6 +31,12 @@ def search_recipes(request):
     else:
         form = RecipeSearchForm()
     return render(request, 'recipes/search.html', {'form': form})
+    
+def tag_recipes(request, tag_id):
+    tag = get_object_or_404(Tag, id=tag_id)
+    recipe_tags = RecipeTag.objects.filter(tag=tag)
+    recipes = [recipe_tag.recipe for recipe_tag in recipe_tags]
+    return render(request, 'recipes/tag_recipes.html', {'tag': tag, 'recipes': recipes})
 
 
 class CustomLoginView(LoginView):

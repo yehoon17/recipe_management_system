@@ -28,10 +28,11 @@
         <ul>
             <!-- Display tag links -->
             {% for tag in tags %}
-                <li><a href="">{{ tag.name }}</a></li>
+                <li><a href="{% url 'tag_recipes' tag.id %}">{{ tag.name }}</a></li>
             {% endfor %}
         </ul>
     </section>
+
     <section class="create-recipe">
         <h2>Create a Recipe</h2>
         <p><a href="{% url 'create_recipe' %}">Create a new recipe</a></p>
