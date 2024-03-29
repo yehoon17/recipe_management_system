@@ -27,6 +27,7 @@ class Query(graphene.ObjectType):
     all_ingredients = graphene.List(IngredientType)
     all_tags = graphene.List(TagType)
     recipes_by_title = graphene.List(RecipeType, title=graphene.String())
+    recipes_sorted_by_cooking_time = graphene.List(RecipeType)
     
     def resolve_all_users(self, info, is_superuser=None):
         queryset = User.objects.all()
@@ -45,6 +46,9 @@ class Query(graphene.ObjectType):
 
     def resolve_recipes_by_title(self, info, title):
         return Recipe.objects.filter(title__icontains=title)
+    
+    def resolve_recipes_sorted_by_cooking_time(self, info, **kwargs):
+        return Recipe.objects.all().order_by('cooking_time')
     
 class CreateUser(graphene.Mutation):
     class Arguments:
