@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
@@ -131,3 +131,14 @@ def delete_recipe(request, pk):
         recipe.delete()
     return redirect('homepage')
 
+def all_recipes(request):
+    all_recipes = Recipe.objects.all()
+    paginator = Paginator(all_recipes, 10)  # Adjust the number of recipes per page as needed
+    page_number = request.GET.get('page')
+    try:
+        recipes = paginator.page(page_number)
+    except PageNotAnInteger:
+        recipes = paginator.page(1)
+    except EmptyPage:
+        recipes = paginator.page(paginator.num_pages)
+    return render(request, 'recipes/all_recipes.html', {'recipes': recipes})
