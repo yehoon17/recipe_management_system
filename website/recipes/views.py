@@ -4,11 +4,11 @@ from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
-    tags = Tag.objects.all() 
+    tags = Tag.objects.all() [:10] 
     
     context = {
         'featured_recipes': featured_recipes,
@@ -92,6 +92,27 @@ def edit_recipe(request, pk):
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
             form.save()
+
+            # Handle ingredient submission
+            ingredient_names = request.POST.getlist('ingredient_name[]')
+            ingredient_quantities = request.POST.getlist('ingredient_quantity[]')
+            ingredient_units = request.POST.getlist('ingredient_unit[]')
+
+            for name, quantity, unit in zip(ingredient_names, ingredient_quantities, ingredient_units):
+                # Create or get Ingredient object
+                ingredient, created = Ingredient.objects.get_or_create(name=name)
+                # Create RecipeIngredient object and associate it with the recipe
+                RecipeIngredient.objects.get_or_create(recipe=recipe, ingredient=ingredient, quantity=quantity, unit=unit)
+
+            # Handle tag submission
+            tag_input = request.POST.get('tag')
+            tag_names = [tag.strip() for tag in tag_input.split(',') if tag.strip()]
+            for tag_name in tag_names:
+                # Create or get Tag object
+                tag, created = Tag.objects.get_or_create(name=tag_name)
+                # Associate the tag with the recipe
+                RecipeTag.objects.get_or_create(recipe=recipe, tag=tag)
+
             return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
     else:
         # Initialize the form with instance data including ingredients
@@ -110,3 +131,14 @@ def delete_recipe(request, pk):
         recipe.delete()
     return redirect('homepage')
 
+def all_recipes(request):
+    all_recipes = Recipe.objects.all()
+    paginator = Paginator(all_recipes, 10)  # Adjust the number of recipes per page as needed
+    page_number = request.GET.get('page')
+    try:
+        recipes = paginator.page(page_number)
+    except PageNotAnInteger:
+        recipes = paginator.page(1)
+    except EmptyPage:
+        recipes = paginator.page(paginator.num_pages)
+    return render(request, 'recipes/all_recipes.html', {'recipes': recipes})

@@ -5,6 +5,7 @@
 <main>
     <div>
         <h2>{{ recipe.title }}</h2>
+        <p>Auther: {{ recipe.user.username }}</p>
 
         {% if recipe.image %}
         <div class="image-container">
