@@ -95,3 +95,35 @@ section {
     margin-top: 5px; /* Add space below the image */
     text-align: center;
 }
+.tags {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.tags h2 {
+    margin-bottom: 10px;
+}
+
+.tags ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tags li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.tags li a {
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.tags li a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
