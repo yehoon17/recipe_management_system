@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     
     def handle(self, *args, **options):
-        users = User.objects.filter(is_superuser=False).values_list('id', flat=True)
+        users = User.objects.filter(is_superuser=False)
 
         file_path = '../data/updated_recipes.json'
         with open(file_path, 'r') as f:
