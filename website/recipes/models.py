@@ -49,7 +49,7 @@ class Review(models.Model):
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    value = models.IntegerField()  # Rating value (e.g., 1 to 5)
+    value = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
