@@ -8,7 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
-    tags = Tag.objects.all() 
+    tags = Tag.objects.all() [:10] 
     
     context = {
         'featured_recipes': featured_recipes,

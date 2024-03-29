@@ -3,3 +3,5 @@ __pycache__/
 .env
 *.jpg
 *.jfif
+
+todo_list.md
