@@ -22,5 +22,7 @@ urlpatterns = [
 
     path('tag/<int:tag_id>/', views.tag_recipes, name='tag_recipes'),
 
+    path('rate/<int:recipe_id>/', views.rate_recipe, name='rate_recipe'),
+
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]

@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag
+from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag, Rating
 from django.contrib.auth.views import LoginView
 from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import JsonResponse
+
 
 def homepage(request):
     featured_recipes = Recipe.objects.all()[:3]  
@@ -163,3 +165,14 @@ def all_recipes(request):
     except EmptyPage:
         recipes = paginator.page(paginator.num_pages)
     return render(request, 'recipes/all_recipes.html', {'recipes': recipes})
+
+@login_required
+def rate_recipe(request, recipe_id):
+    if request.method == 'POST':
+        recipe = get_object_or_404(Recipe, pk=recipe_id)
+        value = request.POST.get('rating')
+        if value and 1 <= int(value) <= 5:
+            rating = Rating.objects.create(recipe=recipe, user=request.user, value=value)
+            return redirect('recipe_detail', pk=recipe_id)
+    return redirect('homepage') 
+
