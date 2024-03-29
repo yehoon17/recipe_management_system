@@ -1,5 +1,6 @@
 import requests
 import json
+import random
 
 
 URL = 'http://localhost:8000/graphql/'  
@@ -31,6 +32,31 @@ def get_all_user_id():
     
     return user_id_list
 
+def create_recipe(recipe, user_id):
+    mutation = '''
+        mutation {
+            createRecipe(
+                userId: %s
+                cookingTime: %d
+                description: "%s"
+                difficultyLevel: "%s"
+                preparationTime: %d
+                title: "%s"
+                image: ""
+            ) {
+                recipe {
+                id
+                }
+            }
+        }
+    ''' % (user_id, recipe['cooking_time'], recipe['description'], recipe['difficulty_level'], recipe['preparation_time'], recipe['title'])
+
+    response = requests.post(URL, json={'query': mutation})
+    data = response.json()
+    recipe_id = data['data']['createRecipe']['recipe']['id']
+
+    return recipe_id
+
 
 if __name__ == '__main__':
     user_id_list = get_all_user_id()
@@ -38,7 +64,12 @@ if __name__ == '__main__':
     with open('recipes.json') as f:
         recipes_data = json.load(f)
 
+    # for recipe in recipes_data:
     recipe = recipes_data[0]
-    print(recipe)
+    recipe = recipe['recipe']
+    user_id = random.choice(user_id_list)
+
+    recipe_id = create_recipe(recipe, user_id)
+    print(recipe_id)
 
     
