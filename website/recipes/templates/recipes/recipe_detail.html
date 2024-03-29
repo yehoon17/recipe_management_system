@@ -48,6 +48,11 @@
     </div>    
     {% endif %}
 
+    {% if average_rating %}
+        <p>Average Rating: {{ average_rating }}</p>
+    {% else %}
+        <p>No ratings yet</p>
+    {% endif %}
 
     <form action="{% url 'rate_recipe' recipe.id %}" method="post">
         {% csrf_token %}

@@ -5,7 +5,7 @@ from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import JsonResponse
+from django.db.models import Avg
 
 
 def homepage(request):
@@ -55,6 +55,7 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     if request.user == recipe.user:  # Check if the current user is the owner of the recipe
@@ -65,7 +66,14 @@ def recipe_detail(request, pk):
     # Retrieve ingredients associated with the recipe
     ingredients = recipe.recipeingredient_set.all()
 
-    context = {'recipe': recipe, 'can_edit': can_edit, 'ingredients': ingredients}
+    average_rating = recipe.rating_set.aggregate(Avg('value'))['value__avg']
+
+    context = {
+        'recipe': recipe,
+        'can_edit': can_edit, 
+        'ingredients': ingredients,
+        'average_rating': average_rating,
+        }
 
     return render(request, 'recipes/recipe_detail.html', context)
 
