@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 URL = 'http://localhost:8000/graphql/'  
@@ -29,9 +30,15 @@ def get_all_user_id():
         print(f'Error: {response.status_code} - {response.text}')
     
     return user_id_list
-    
+
 
 if __name__ == '__main__':
     user_id_list = get_all_user_id()
-    print(user_id_list)
+    
+    with open('recipes.json') as f:
+        recipes_data = json.load(f)
+
+    recipe = recipes_data[0]
+    print(recipe)
+
     
