@@ -113,6 +113,16 @@ python data/graphql_user_importer.py -n {n_user}
 1. `.env` 파일 생성
 2. `Google Custom Search JSON API`와 `Google CX` 입력
 3. `python get_recipe_images.py` 실행
+#### 레시피 데이터 적용
+1. `/website`로 이동
+```bash
+cd website
+```
+2. 레시피 데이터 생성 커맨드 입력
+```bash
+python manage.py load_recipe_data
+```
+
 
 
 ## 추후 과제
