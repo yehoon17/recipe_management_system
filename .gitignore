@@ -1,7 +1,7 @@
 /venv
+/myvenv
 __pycache__/
 .env
 *.jpg
 *.jfif
 
-todo_list.md
