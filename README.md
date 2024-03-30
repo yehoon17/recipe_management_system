@@ -1,13 +1,10 @@
 # Recipe Management System
 
 ## 목차
-- [Recipe Management System](#recipe-management-system)
   - [목차](#목차)
   - [개요](#개요)
   - [기능](#기능)
   - [설치](#설치)
-      - [로컬](#로컬)
-      - [Docker](#docker)
   - [사용법](#사용법)
   - [사용된 기술](#사용된-기술)
   - [ER 다이어그램](#er-다이어그램)
@@ -99,8 +96,25 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 ## 데모
 [![web_demo](https://img.youtube.com/vi/G7DPu1fAI1Q/0.jpg)](https://www.youtube.com/watch?v=G7DPu1fAI1Q)
 ## 테스트용 데이터 생성 
+### 유저 생성
+n개의 유저 계정 생성
+```bash
+python data/graphql_user_importer.py -n {n_user}
+```
+
+### 레시피 생성
+`data/` 디렉토리
+#### 데이터 생성
+`recipes_fraction.json`: ChatGPT로 생성한 레시피 데이터 json 파일
+#### 전처리
+`recipes.json`: `fraction_to_decimal.py`로 분수 형식의 데이터 소수점 형식으로 변환
+`updated_recipes.json`: 중간 키값 `"recipe"` 제거
+#### 이미지 파일 웹 크롤링
+1. `.env` 파일 생성
+2. `Google Custom Search JSON API`와 `Google CX` 입력
+3. `python get_recipe_images.py` 실행
 
 
 ## 추후 과제
-
-
+ - 댓글 구현
+ - 레시피의 재료와 태그 삭제 기능 구현
