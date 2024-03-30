@@ -15,7 +15,7 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 1. 깃허브에서 레포지토리를 클론
 
    ```bash
-   git clone https://github.com/your-username/recipe-management-system.git
+   git clone https://github.com/yehoon17/recipe-management-system.git
    ```
 
 2. 프로젝트 디렉토리로 이동
