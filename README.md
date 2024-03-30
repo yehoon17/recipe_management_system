@@ -12,45 +12,60 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 
 ## 설치
 
-1. 깃허브에서 레포지토리를 클론
+### 깃허브에서 레포지토리를 클론
 
    ```bash
    git clone https://github.com/yehoon17/recipe-management-system.git
    ```
 
-2. 프로젝트 디렉토리로 이동
-
-   ```bash
-   cd recipe-management-system
-   ```
-
-3. 필요한 종속성을 설치
+#### 로컬 
+1. 필요한 종속성을 설치
 
    ```bash
    pip install -r requirements.txt
    ```
 
-4. 데이터베이스 마이그레이션을 적용
+2. 디렉토리 이동
+
+   ```bash
+   cd website
+   ```
+
+3. 데이터베이스 마이그레이션을 적용
 
    ```bash
    python manage.py migrate
    ```
 
-5. 개발 서버를 실행
+4. 개발 서버를 실행
 
    ```bash
    python manage.py runserver
    ```
 
-6. 웹 브라우저에서 `http://localhost:8000`에서 응용 프로그램에 액세스
+5. 웹 브라우저에서 `http://localhost:8000`에서 응용 프로그램에 액세스
+
+#### Docker
+1. 도커 이미지 생성
+   ```bash
+   docker build -t recipe_management_system .
+   ```
+
+2. 도커 컨테이너 실행
+   ```bash
+   docker run -d -p 8000:8000 recipe_management_system
+   ```
+
+3. 웹 브라우저에서 `http://localhost:8000`에서 응용 프로그램에 액세스
 
 ## 사용법
 
-- 새 계정을 생성하거나 기존 계정으로 로그인합니다.
-- 레시피를 찾아보거나 특정 레시피를 검색하거나 태그별로 레시피를 필터링합니다.
-- 설명, 재료 및 평가를 포함한 레시피 세부 정보를 확인합니다.
-- 레시피를 평가하고 피드백을 제출합니다.
-- 새로운 레시피를 만들거나 기존 레시피를 편집하거나 삭제합니다.
+- 새 계정을 생성하거나 기존 계정으로 로그인
+- 레시피를 찾아보거나 특정 레시피를 검색하거나 태그별로 레시피를 필터링
+- 설명, 재료 및 평가를 포함한 레시피 세부 정보를 확인
+- 레시피를 평가하고 피드백을 제출
+- 새로운 레시피를 만들거나 기존 레시피를 편집하거나 삭제
+- 테스트용 데이터 생성
 
 ## 사용된 기술
 
@@ -63,5 +78,16 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 
 ## ER 다이어그램
 <img src="document/er_diagram.png" alt="ER 다이어그램" width="700" height="auto">
+
+## 화면 구성
+
+
+## 테스트용 데이터 생성 방법
+
+
+## GraphQL
+
+
+## 추후 과제
 
 
