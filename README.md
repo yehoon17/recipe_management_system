@@ -109,7 +109,8 @@ python data/graphql_user_importer.py -n {n_user}
 #### 전처리
 `recipes.json`: `fraction_to_decimal.py`로 분수 형식의 데이터 소수점 형식으로 변환
 `updated_recipes.json`: 중간 키값 `"recipe"` 제거
-#### 이미지 파일 웹 크롤링
+#### 이미지 파일 웹 크롤링(Optional)
+이 단계는 생략 가능하고, 생략 시 기본 이미지 적용됨
 1. `.env` 파일 생성
 2. `Google Custom Search JSON API`와 `Google CX` 입력
 3. `python get_recipe_images.py` 실행
