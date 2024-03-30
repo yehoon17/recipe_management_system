@@ -164,7 +164,7 @@ def delete_recipe(request, pk):
 
 def all_recipes(request):
     all_recipes = Recipe.objects.all()
-    paginator = Paginator(all_recipes, 10)  # Adjust the number of recipes per page as needed
+    paginator = Paginator(all_recipes, 9)  # Adjust the number of recipes per page as needed
     page_number = request.GET.get('page')
     try:
         recipes = paginator.page(page_number)

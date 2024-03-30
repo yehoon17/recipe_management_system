@@ -295,3 +295,10 @@ section {
 .rating-form button:hover {
     opacity: 0.8; /* Reduce opacity on hover */
 }
+
+.recipe-item img {
+    width: 300px; /* Adjust this value as needed */
+    height: 300px; /* Adjust this value as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
