@@ -1,10 +1,11 @@
 h2 {
     color: #2ecb4b;
+    margin-bottom: 10px;
 }
 
 
 section {
-    margin-bottom: 40px; /* Add some margin to the bottom of each section */
+    margin-bottom: 40px;
 }
 
 .login-form {
@@ -14,12 +15,6 @@ section {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-}
-
-.login-form h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
 }
 
 .login-form label {
@@ -68,9 +63,6 @@ section {
     height: auto; /* Preserve the aspect ratio of the image */
 }
 
-.featured-recipes {
-    /* Add styles as needed */
-}
 
 .recipe-list {
     display: flex;
@@ -94,4 +86,228 @@ section {
 .recipe-item h3 {
     margin-top: 5px; /* Add space below the image */
     text-align: center;
+}
+
+.tags ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tags li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.tags li a {
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.tags li a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.search form {
+    display: flex;
+    align-items: center;
+}
+
+.search form input[type="text"],
+.search form select {
+    flex: 1;
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search form input[type="text"] {
+    width: 400px;
+}
+
+.search form button {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search form button:hover {
+    background-color: #0056b3;
+}
+
+.search form .errorlist {
+    display: none;
+}
+
+.search form label {
+    display: none;
+}
+
+
+
+/* Style the link */
+.create-recipe a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hover effect for the link */
+.create-recipe a:hover {
+    text-decoration: underline;
+}
+
+.featured-recipes a {
+    color: #2ecb4b;
+    text-decoration: none;
+}
+
+.featured-recipes a:hover {
+    text-decoration: underline;
+}
+
+/* Style the recipe detail container */
+.recipe-detail {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the recipe title */
+.recipe-detail h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Style the author */
+.recipe-detail p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Style the image container */
+.image-container {
+    margin-bottom: 15px;
+}
+
+/* Style the recipe image */
+.image-container img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* Style the ingredient list */
+.recipe-detail ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 20px;
+}
+
+.recipe-detail ul li {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Style the tags list */
+.recipe-detail ul.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.recipe-detail ul.tags-list li {
+    font-size: 14px;
+    color: #007bff;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.edit-button,
+.delete-button {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+
+.btn {
+    padding: 5px 10px; /* Add padding to buttons */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.edit-button a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Set primary button color */
+    color: white; /* Set text color to white */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Set danger button color */
+    color: white; /* Set text color to white */
+}
+
+.btn:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
+
+.average-rating {
+    margin-bottom: 10px; /* Add some space below the average rating */
+}
+
+.rating-form {
+    margin-top: 20px; /* Add some space above the rating form */
+}
+
+.rating-form label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 5px; /* Add some space below each label */
+}
+
+.rating-form select {
+    width: 100px; /* Set width of select dropdown */
+    margin-right: 10px; /* Add some space to the right of the select dropdown */
+}
+
+.rating-form button {
+    padding: 5px 10px; /* Add padding to button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    background-color: #007bff; /* Set button background color */
+    color: white; /* Set text color to white */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.rating-form button:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
+
+.recipe-item img {
+    width: 300px; /* Adjust this value as needed */
+    height: 300px; /* Adjust this value as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+
+.graphql a {
+    color: #2ecb4b;
+    text-decoration: none;
+}
+
+.graphql a:hover {
+    text-decoration: underline;
 }

@@ -3,10 +3,10 @@
 {% block title %}{{ recipe.title }} - Recipe Detail{% endblock %}
 
 {% block content %}
-<main>
+<main class="recipe-detail">
     <div>
         <h2>{{ recipe.title }}</h2>
-        <p>Auther: {{ recipe.user.username }}</p>
+        <p class="author">Auther: {{ recipe.user.username }}</p>
 
         {% if recipe.image %}
         <div class="image-container">
@@ -14,20 +14,20 @@
         </div>        
         {% endif %}
 
-        <p><strong>Description:</strong> {{ recipe.description }}</p>
+        <p><strong>Description:</strong><br> {{ recipe.description }}</p>
         <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }} minutes</p>
         <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
         <p><strong>Difficulty Level:</strong> {{ recipe.difficulty_level }}</p>
 
         <h3>Ingredients:</h3>
-        <ul>
+        <ul class="ingredients-list">
             {% for ingredient in ingredients %}
             <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}</li>
             {% endfor %}
         </ul>
 
         <h3>Tags:</h3>
-        <ul>
+        <ul class="tags-list">
             {% for tag in recipe.recipetag_set.all %}
             <li>{{ tag.tag.name }}</li>
             {% endfor %}
@@ -35,37 +35,37 @@
     </div>
 
     {% if can_edit %}
-    <div>
+    <div class="edit-button">
         <a href="{% url 'edit_recipe' pk=recipe.pk %}" class="btn btn-primary">Edit Recipe</a>
     </div>
-    <div>
-        <br>
+    <div class="delete-button">
         <form action="{% url 'delete_recipe' pk=recipe.pk %}" method="post" class="d-inline">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Delete Recipe</button>
         </form>
     </div>    
     {% endif %}
+    
+    <div>
+        {% if average_rating %}
+            <p class="average-rating">Average Rating: {{ average_rating }}</p>
+        {% else %}
+            <p class="average-rating">No ratings yet</p>
+        {% endif %}
 
-    {% if average_rating %}
-        <p>Average Rating: {{ average_rating }}</p>
-    {% else %}
-        <p>No ratings yet</p>
-    {% endif %}
-
-    <form action="{% url 'rate_recipe' recipe.id %}" method="post">
-        {% csrf_token %}
-        <label for="rating">Rate this recipe:</label>
-        <select name="rating" id="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <button type="submit">Submit Rating</button>
-    </form>
-
+        <form action="{% url 'rate_recipe' recipe.id %}" method="post" class="rating-form">
+            {% csrf_token %}
+            <label for="rating">Rate this recipe:</label>
+            <select name="rating" id="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="submit" class="btn-submit-rating">Submit Rating</button>
+        </form>
+    </div>
 </main>
   
 {% endblock %}
