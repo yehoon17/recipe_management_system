@@ -172,3 +172,126 @@ section {
 .featured-recipes a:hover {
     text-decoration: underline;
 }
+
+/* Style the recipe detail container */
+.recipe-detail {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the recipe title */
+.recipe-detail h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Style the author */
+.recipe-detail p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Style the image container */
+.image-container {
+    margin-bottom: 15px;
+}
+
+/* Style the recipe image */
+.image-container img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* Style the ingredient list */
+.recipe-detail ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 20px;
+}
+
+.recipe-detail ul li {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Style the tags list */
+.recipe-detail ul.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.recipe-detail ul.tags-list li {
+    font-size: 14px;
+    color: #007bff;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.edit-button,
+.delete-button {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+
+.btn {
+    padding: 5px 10px; /* Add padding to buttons */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.edit-button a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Set primary button color */
+    color: white; /* Set text color to white */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Set danger button color */
+    color: white; /* Set text color to white */
+}
+
+.btn:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
+
+.average-rating {
+    margin-bottom: 10px; /* Add some space below the average rating */
+}
+
+.rating-form {
+    margin-top: 20px; /* Add some space above the rating form */
+}
+
+.rating-form label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 5px; /* Add some space below each label */
+}
+
+.rating-form select {
+    width: 100px; /* Set width of select dropdown */
+    margin-right: 10px; /* Add some space to the right of the select dropdown */
+}
+
+.rating-form button {
+    padding: 5px 10px; /* Add padding to button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    background-color: #007bff; /* Set button background color */
+    color: white; /* Set text color to white */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.rating-form button:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
