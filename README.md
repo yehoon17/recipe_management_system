@@ -1,5 +1,5 @@
 # Recipe Management System
-3일 동안 구현한 Django와 GraphQL로 구축된 레시피 관리 시스템
+3일 안에 구현한 Django와 GraphQL로 구축된 레시피 관리 시스템
 
 ## 목차
   - [목차](#목차)
