@@ -1,5 +1,22 @@
 # Recipe Management System
 
+## 목차
+- [Recipe Management System](#recipe-management-system)
+  - [목차](#목차)
+  - [개요](#개요)
+  - [기능](#기능)
+  - [설치](#설치)
+      - [로컬](#로컬)
+      - [Docker](#docker)
+  - [사용법](#사용법)
+  - [사용된 기술](#사용된-기술)
+  - [ER 다이어그램](#er-다이어그램)
+  - [데모](#데모)
+  - [테스트용 데이터 생성](#테스트용-데이터-생성)
+  - [추후 과제](#추후-과제)
+
+
+## 개요
 Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는 레시피를 생성, 조회, 편집 및 삭제할 수 있으며 또한 레시피에 대한 평가 및 특정 기준에 따른 레시피 검색이 가능합니다.
 
 ## 기능
@@ -12,7 +29,7 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 
 ## 설치
 
-### 깃허브에서 레포지토리를 클론
+**깃허브에서 레포지토리를 클론**
 
    ```bash
    git clone https://github.com/yehoon17/recipe-management-system.git
@@ -79,13 +96,9 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 ## ER 다이어그램
 <img src="document/er_diagram.png" alt="ER 다이어그램" width="700" height="auto">
 
-## 화면 구성
+## 데모
 
-
-## 테스트용 데이터 생성 방법
-
-
-## GraphQL
+## 테스트용 데이터 생성 
 
 
 ## 추후 과제
