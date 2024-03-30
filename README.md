@@ -97,7 +97,7 @@ Django와 GraphQL로 구축된 레시피 관리 시스템입니다. 사용자는
 <img src="document/er_diagram.png" alt="ER 다이어그램" width="700" height="auto">
 
 ## 데모
-
+[![web_demo](https://img.youtube.com/vi/G7DPu1fAI1Q/0.jpg)](https://www.youtube.com/watch?v=G7DPu1fAI1Q)
 ## 테스트용 데이터 생성 
 
 
