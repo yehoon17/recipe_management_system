@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}Register{% endblock %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock %}
 
 {% block content %}
-    <h2>Register</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
-    </form>
+<link rel="stylesheet" href="{% static 'recipes/css/register_styles.css' %}">
+    <div class="register-form-container">
+        <h2>Register</h2>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
 {% endblock %}
