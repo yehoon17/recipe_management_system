@@ -302,3 +302,12 @@ section {
     object-fit: cover; /* Maintain aspect ratio */
 }
 
+
+.graphql a {
+    color: #2ecb4b;
+    text-decoration: none;
+}
+
+.graphql a:hover {
+    text-decoration: underline;
+}
