@@ -44,6 +44,13 @@ Django와 GraphQL로 구축된 레시피 관리 시스템
    ```
 
 #### 로컬 
+** 가상 환경 설정(optional) **
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+
 1. 필요한 종속성을 설치
 
    ```bash
@@ -144,6 +151,6 @@ python manage.py load_recipe_data
  - [ ] 태그 삭제 구현
  - [ ] 태그 수정 구현
  - [ ] rating 중복 불가 구현
- - [ ] 리뷰 제거
+ - [x] 리뷰 제거
  - [ ] 로그 구현
  - [ ] WEB, WAS, 라우팅 구현
