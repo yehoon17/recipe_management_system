@@ -2,15 +2,24 @@
 3일 안에 구현한 Django와 GraphQL로 구축된 레시피 관리 시스템
 
 ## 목차
+- [Recipe Management System](#recipe-management-system)
   - [목차](#목차)
   - [개요](#개요)
   - [기능](#기능)
   - [설치](#설치)
+      - [로컬](#로컬)
+      - [Docker](#docker)
   - [사용법](#사용법)
   - [사용된 기술](#사용된-기술)
   - [ER 다이어그램](#er-다이어그램)
   - [데모](#데모)
   - [테스트용 데이터 생성](#테스트용-데이터-생성)
+    - [유저 생성](#유저-생성)
+    - [레시피 생성](#레시피-생성)
+      - [데이터 생성](#데이터-생성)
+      - [전처리](#전처리)
+      - [이미지 파일 웹 크롤링(Optional)](#이미지-파일-웹-크롤링optional)
+      - [레시피 데이터 적용](#레시피-데이터-적용)
   - [추후 과제](#추후-과제)
 
 
@@ -31,7 +40,7 @@ Django와 GraphQL로 구축된 레시피 관리 시스템
 **깃허브에서 레포지토리를 클론**
 
    ```bash
-   git clone https://github.com/yehoon17/recipe-management-system.git
+   git clone https://github.com/yehoon17/recipe_management_system.git
    ```
 
 #### 로컬 
@@ -129,5 +138,12 @@ python manage.py load_recipe_data
 
 
 ## 추후 과제
- - 댓글 구현
- - 레시피의 재료와 태그 삭제 기능 구현
+ - [ ] 댓글 구현
+ - [ ] 재료 삭제 구현
+ - [ ] 재료 수정 구현
+ - [ ] 태그 삭제 구현
+ - [ ] 태그 수정 구현
+ - [ ] rating 중복 불가 구현
+ - [ ] 리뷰 제거
+ - [ ] 로그 구현
+ - [ ] WEB, WAS, 라우팅 구현
