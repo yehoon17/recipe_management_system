@@ -153,4 +153,7 @@ python manage.py load_recipe_data
  - [ ] rating 중복 불가 구현
  - [x] 리뷰 제거
  - [ ] 로그 구현
+ - [ ] 테스트 구현
+ - [ ] 개인 프로필
+ - [ ] 작성한 레시피 조회
  - [ ] WEB, WAS, 라우팅 구현
