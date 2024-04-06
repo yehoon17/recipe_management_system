@@ -7,19 +7,11 @@
   - [개요](#개요)
   - [기능](#기능)
   - [설치](#설치)
-      - [로컬](#로컬)
-      - [Docker](#docker)
   - [사용법](#사용법)
   - [사용된 기술](#사용된-기술)
   - [ER 다이어그램](#er-다이어그램)
   - [데모](#데모)
   - [테스트용 데이터 생성](#테스트용-데이터-생성)
-    - [유저 생성](#유저-생성)
-    - [레시피 생성](#레시피-생성)
-      - [데이터 생성](#데이터-생성)
-      - [전처리](#전처리)
-      - [이미지 파일 웹 크롤링(Optional)](#이미지-파일-웹-크롤링optional)
-      - [레시피 데이터 적용](#레시피-데이터-적용)
   - [추후 과제](#추후-과제)
 
 
@@ -125,7 +117,7 @@ python data/graphql_user_importer.py -n {n_user}
 #### 데이터 생성
 `recipes_fraction.json`: ChatGPT로 생성한 레시피 데이터 json 파일
 #### 전처리
-`recipes.json`: `fraction_to_decimal.py`로 분수 형식의 데이터 소수점 형식으로 변환
+`recipes.json`: `fraction_to_decimal.py`로 분수 형식의 데이터 소수점 형식으로 변환  
 `updated_recipes.json`: 중간 키값 `"recipe"` 제거
 #### 이미지 파일 웹 크롤링(Optional)
 이 단계는 생략 가능하고, 생략 시 기본 이미지 적용됨
