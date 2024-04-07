@@ -6,3 +6,4 @@ __pycache__/
 *.jfif
 
 db.sqlite3
+.ipynb_checkpoints
