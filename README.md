@@ -136,7 +136,7 @@ python manage.py load_recipe_data
 ```
 
 ## REST API와 GraphQL API 비교
-
+[스크립트](https://github.com/yehoon17/recipe_management_system/blob/master/script/compare_api.ipynb)
 
 ## 추후 과제
  - [ ] 댓글 구현
