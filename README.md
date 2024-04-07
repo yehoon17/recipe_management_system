@@ -12,6 +12,7 @@
   - [ER 다이어그램](#er-다이어그램)
   - [데모](#데모)
   - [테스트용 데이터 생성](#테스트용-데이터-생성)
+  - [REST API와 GraphQL API 비교](#rest-api와-graphql-api-비교)
   - [추후 과제](#추후-과제)
 
 
@@ -134,6 +135,7 @@ cd website
 python manage.py load_recipe_data
 ```
 
+## REST API와 GraphQL API 비교
 
 
 ## 추후 과제
@@ -149,5 +151,5 @@ python manage.py load_recipe_data
  - [ ] 개인 프로필
  - [ ] 작성한 레시피 조회
  - [ ] WEB, WAS, 라우팅 구현
- - [ ] REST API 구현
- - [ ] REST API와 GraphQL API 비교해보기 
+ - [x] REST API 구현
+ - [x] REST API와 GraphQL API 비교해보기 
