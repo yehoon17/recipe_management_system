@@ -149,3 +149,5 @@ python manage.py load_recipe_data
  - [ ] 개인 프로필
  - [ ] 작성한 레시피 조회
  - [ ] WEB, WAS, 라우팅 구현
+ - [ ] REST API 구현
+ - [ ] REST API와 GraphQL API 비교해보기 
