@@ -25,4 +25,8 @@ urlpatterns = [
     path('rate/<int:recipe_id>/', views.rate_recipe, name='rate_recipe'),
 
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+
+    path('rest-api/recipe/', views.RecipeListCreate.as_view()),
+    path('rest-api/ingredient/', views.IngredientListCreate.as_view()),
+    path('rest-api/recipe-ingredient/', views.RecipeIngredientListCreate.as_view())
 ]

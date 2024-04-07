@@ -5,3 +5,5 @@ __pycache__/
 *.jpg
 *.jfif
 
+db.sqlite3
+.ipynb_checkpoints

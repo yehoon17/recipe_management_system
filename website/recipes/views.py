@@ -6,6 +6,21 @@ from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Avg
+from rest_framework import generics
+from .serializers import RecipeSerializer, IngredientSerializer, RecipeIngredientSerializer
+
+
+class RecipeListCreate(generics.ListCreateAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+
+class IngredientListCreate(generics.ListCreateAPIView):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+
+class RecipeIngredientListCreate(generics.ListCreateAPIView):
+    queryset = RecipeIngredient.objects.all()
+    serializer_class = RecipeIngredientSerializer
 
 
 def homepage(request):
@@ -186,3 +201,5 @@ def rate_recipe(request, recipe_id):
                 # Redirect to login page if user is not logged in
                 return redirect('login')  # Assuming 'login' is the name of your login URL pattern
     return redirect('homepage')
+
+
