@@ -5,7 +5,7 @@ from recipes.forms import CustomUserCreationForm
 from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Avg
+from django.db.models import Avg, Q
 from rest_framework import generics
 from .serializers import RecipeSerializer, IngredientSerializer, RecipeIngredientSerializer
 
@@ -144,11 +144,29 @@ def edit_recipe(request, pk):
             ingredient_quantities = request.POST.getlist('ingredient_quantity[]')
             ingredient_units = request.POST.getlist('ingredient_unit[]')
 
+            ingredients = []
             for name, quantity, unit in zip(ingredient_names, ingredient_quantities, ingredient_units):
                 # Create or get Ingredient object
                 ingredient, created = Ingredient.objects.get_or_create(name=name)
+                ingredients.append(ingredient)
                 # Create RecipeIngredient object and associate it with the recipe
-                RecipeIngredient.objects.get_or_create(recipe=recipe, ingredient=ingredient, quantity=quantity, unit=unit)
+                defaults = {
+                    'quantity': quantity,
+                    'unit': unit
+                }
+                RecipeIngredient.objects.update_or_create(
+                    recipe=recipe,
+                    ingredient=ingredient,
+                    defaults=defaults
+                )
+            # Delete if not in input but in database
+            recipe_ingredient_to_delete = RecipeIngredient.objects.filter(
+                recipe=recipe
+            ).exclude(
+                Q(ingredient__in=ingredients)
+            )
+            recipe_ingredient_to_delete.delete()
+
 
             # Handle tag submission
             tag_input = request.POST.get('tag')
