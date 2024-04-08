@@ -140,8 +140,8 @@ python manage.py load_recipe_data
 
 ## 추후 과제
  - [ ] 댓글 구현
- - [ ] 재료 삭제 구현
- - [ ] 재료 수정 구현
+ - [x] 재료 삭제 구현
+ - [x] 재료 수정 구현
  - [ ] 태그 삭제 구현
  - [ ] 태그 수정 구현
  - [ ] rating 중복 불가 구현
@@ -153,3 +153,4 @@ python manage.py load_recipe_data
  - [ ] WEB, WAS, 라우팅 구현
  - [x] REST API 구현
  - [x] REST API와 GraphQL API 비교해보기 
+ - [ ] 재료 입력이 비었을 때 에러 팝업
