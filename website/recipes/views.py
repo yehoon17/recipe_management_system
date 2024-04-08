@@ -148,7 +148,15 @@ def edit_recipe(request, pk):
                 # Create or get Ingredient object
                 ingredient, created = Ingredient.objects.get_or_create(name=name)
                 # Create RecipeIngredient object and associate it with the recipe
-                RecipeIngredient.objects.get_or_create(recipe=recipe, ingredient=ingredient, quantity=quantity, unit=unit)
+                defaults = {
+                    'quantity': quantity,
+                    'unit': unit
+                }
+                RecipeIngredient.objects.update_or_create(
+                    recipe=recipe,
+                    ingredient=ingredient,
+                    defaults=defaults
+                )
 
             # Handle tag submission
             tag_input = request.POST.get('tag')
