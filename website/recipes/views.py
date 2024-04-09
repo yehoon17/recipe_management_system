@@ -171,11 +171,20 @@ def edit_recipe(request, pk):
             # Handle tag submission
             tag_input = request.POST.get('tag')
             tag_names = [tag.strip() for tag in tag_input.split(',') if tag.strip()]
+            tags = []
             for tag_name in tag_names:
                 # Create or get Tag object
                 tag, created = Tag.objects.get_or_create(name=tag_name)
+                tags.append(tag)
                 # Associate the tag with the recipe
                 RecipeTag.objects.get_or_create(recipe=recipe, tag=tag)
+            # Delete if not in input but in database
+            recipe_tag_to_delete = RecipeTag.objects.filter(
+                recipe=recipe
+            ).exclude(
+                Q(tag__in=tags)
+            )
+            recipe_tag_to_delete.delete()
 
             return redirect('recipe_detail', pk=pk)  # Redirect to recipe detail page after editing
     else:
