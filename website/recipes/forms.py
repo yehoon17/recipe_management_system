@@ -1,15 +1,17 @@
 from django.contrib.auth.forms import UserCreationForm
-from recipes.models import User
-
 from django import forms
-from .models import Recipe
+from .models import Recipe, Profile, User
 
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields
-        
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']        
 
 class RecipeForm(forms.ModelForm):
     class Meta:
