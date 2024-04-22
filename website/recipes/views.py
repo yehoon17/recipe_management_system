@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag, Rating
 from django.contrib.auth.views import LoginView
-from recipes.forms import CustomUserCreationForm
+from recipes.forms import CustomUserCreationForm, ProfileEditForm, ProfileForm
 from .forms import RecipeForm, RecipeSearchForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -76,6 +76,24 @@ def profile(request):
     context = {'recipes': recipes}
     return render(request, 'profile/profile.html', context)
 
+@login_required
+def profile_edit(request):
+    if request.method == 'POST':
+        # Handle profile image form
+        profile_image_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if profile_image_form.is_valid():
+            profile_image_form.save()
+        
+        # Handle user information form
+        user_form = ProfileEditForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+
+        return redirect('profile')  # Redirect to the profile page after editing
+    else:
+        profile_image_form = ProfileForm(instance=request.user.profile)
+        user_form = ProfileEditForm(instance=request.user)
+    return render(request, 'profile/profile_edit.html', {'profile_image_form': profile_image_form, 'user_form': user_form})
 
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)

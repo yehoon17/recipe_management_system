@@ -1,0 +1,59 @@
+<!-- profile_edit.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'recipes/css/profile.css' %}">
+<main class="profile">
+  <h2 class="profile-heading">Edit Profile</h2>
+  
+  <form method="post" enctype="multipart/form-data" class="profile-form">
+    {% csrf_token %}
+    
+    <!-- Profile Image Form -->
+    <fieldset class="profile-fieldset">
+      <legend class="profile-legend">Profile Image</legend>
+      <div class="profile-image">
+        {% if profile_image_form.instance.image %}
+            <img id="preview-image" src="{{ profile_image_form.instance.image.url }}" alt="Current Profile Image">
+        {% else %}
+            <img src="{{ user.profile.image.url }}" alt="Profile Image">
+        {% endif %}
+      </div>
+      {{ profile_image_form.image }}
+    </fieldset>
+    
+    <!-- User Information Form -->
+    <fieldset class="profile-fieldset">
+      <legend class="profile-legend">User Information</legend>
+      {{ user_form.as_p }}
+    </fieldset>
+    
+    <button type="submit" class="profile-submit-btn">Save Changes</button>
+  </form>
+</main>
+
+<script>
+  // Function to update image preview when a new image is selected
+  function updateImagePreview(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        document.getElementById('preview-image').src = e.target.result;
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  // Event listener to trigger updateImagePreview function when a new image is chosen
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+    updateImagePreview(this);
+  });
+</script>
+
+{% endblock %}
