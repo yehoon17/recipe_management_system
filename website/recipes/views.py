@@ -70,8 +70,12 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+@login_required
 def profile(request):
-    return render(request, 'profile/profile.html')
+    recipes = Recipe.objects.filter(user=request.user)
+    context = {'recipes': recipes}
+    return render(request, 'profile/profile.html', context)
+
 
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
