@@ -1,0 +1,52 @@
+<div>
+    <h3>Comments</h3>
+    <form action="{% url 'create_comment' recipe.id %}" method="post" class="comment-form">
+        {% csrf_token %}
+        <textarea name="text" rows="4" cols="50" placeholder="Write your comment here" class="comment-textarea"></textarea><br>
+        <button type="submit" class="comment-submit">Submit</button>
+    </form>
+</div>
+  
+<!-- Loop through each comment -->
+{% for comment in comments %}
+  <div class="comment">
+    <p>{{ comment.text }}</p>
+    
+    <!-- Check if the logged-in user is the author of the comment -->
+    {% if comment.user == request.user %}
+      <button class="edit-btn">Edit</button>
+      <button class="delete-btn">Delete</button>
+    {% endif %}
+    
+    <!-- Reply button -->
+    <button class="reply-btn" data-comment-id="{{ comment.id }}">Reply</button>
+    
+    <!-- Indented replies -->
+    {% for reply in comment.replies.all %}
+      <div class="reply">
+        <p>{{ reply.text }}</p>
+      </div>
+    {% endfor %}
+    
+    <!-- Reply textarea (hidden by default) -->
+    <div class="reply-form" data-comment-id="{{ comment.id }}" style="display: none;">
+        <form method="post" action="{% url 'reply_comment' recipe.id comment.id %}">
+          {% csrf_token %}
+          <textarea name="text"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+    </div>
+  </div>
+{% endfor %}
+
+<script>
+  // JavaScript to toggle the reply textarea
+  document.querySelectorAll('.reply-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const commentId = button.dataset.commentId;
+      const replyForm = document.querySelector(`.reply-form[data-comment-id="${commentId}"]`);
+      replyForm.style.display = 'block';
+    });
+  });
+</script>
+

@@ -1,8 +1,8 @@
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag, Rating
+from .models import Recipe, Tag, Ingredient, RecipeIngredient, RecipeTag, Rating, Comment
 from django.contrib.auth.views import LoginView
-from recipes.forms import CustomUserCreationForm
-from .forms import RecipeForm, RecipeSearchForm
+from recipes.forms import CustomUserCreationForm, RecipeForm, RecipeSearchForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Avg, Q
@@ -82,12 +82,14 @@ def recipe_detail(request, pk):
     ingredients = recipe.recipeingredient_set.all()
 
     average_rating = recipe.rating_set.aggregate(Avg('value'))['value__avg']
+    comments = Comment.objects.filter(recipe=recipe)
 
     context = {
         'recipe': recipe,
         'can_edit': can_edit, 
         'ingredients': ingredients,
         'average_rating': average_rating,
+        'comments': comments,
         }
 
     return render(request, 'recipes/recipe_detail.html', context)
@@ -220,4 +222,56 @@ def rate_recipe(request, recipe_id):
                 return redirect('login')  # Assuming 'login' is the name of your login URL pattern
     return redirect('homepage')
 
+@login_required
+def create_comment(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.recipe = recipe
+            comment.save()
+            return redirect('recipe_detail', pk=recipe_id)
+        
+@login_required
+def reply_comment(request, recipe_id, comment_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.recipe = recipe
+            comment.parent_comment = get_object_or_404(Comment, pk=comment_id)
+            comment.save()
+            return redirect('recipe_detail', pk=recipe_id)
 
+
+@login_required
+def update_comment(request, recipe_id, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    
+    # Check if the authenticated user is the owner of the comment
+    if request.user != comment.user:
+        return HttpResponseForbidden("You are not allowed to update this comment.")
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('recipe_detail', pk=recipe_id)
+    else:
+        form = CommentForm(instance=comment)
+
+@login_required
+def delete_comment(request, recipe_id, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    
+    # Check if the authenticated user is the owner of the comment
+    if request.user != comment.user:
+        return HttpResponseForbidden("You are not allowed to delete this comment.")
+
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('recipe_detail', pk=recipe_id)
