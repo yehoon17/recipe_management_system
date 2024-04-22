@@ -1,3 +1,4 @@
+/* Reset styles for body */
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -5,10 +6,7 @@ body {
     padding: 0; 
 }
 
-h1 {
-    color: #333;
-}
-
+/* Header styles */
 header {
     display: flex;
     justify-content: space-between; /* Align items on opposite ends */
@@ -17,14 +15,7 @@ header {
     background-color: #f0f0f0;
 }
 
-.login-link {
-    margin-left: auto; /* Push the login link to the far right */
-}
-
-.login-link a {
-    text-decoration: none;
-    color: #333; /* Adjust color as needed */
-}
+/* Navigation styles */
 header nav ul {
     list-style: none; /* Remove default list styles */
     padding: 0;
@@ -37,20 +28,43 @@ header nav ul li {
 
 header nav ul li a {
     text-decoration: none;
-    color: #333; /* Adjust color as needed */
+    color: #4e4e4e; /* Adjust color as needed */
     font-weight: bold; /* Make the font bold */
     font-size: 30px; /* Increase font size */
     transition: color 0.3s ease; /* Add transition effect for smoother color change */
 }
 
 header nav ul li a:hover {
-    color: #ff6600; /* Change color on hover */
+    color: #000000; /* Change color on hover */
 }
+
+/* Login/logout section styles */
+.header-right {
+    margin-left: auto; /* Push the login link to the far right */
+    display: flex;    
+    align-items: center; 
+}
+
+.login-link a {
+    text-decoration: none;
+    color: #4e4e4e; /* Adjust color as needed */
+    padding: 5px 10px; 
+    margin-left: 10px;
+}
+
+.login-link a:hover {
+    color: #000000; 
+    background-color: #bbbbbb48; 
+    border-radius: 5px;
+}
+
+/* Container styles */
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Footer styles */
 footer {
     background-color: #909090;
     color: #fff;
@@ -58,9 +72,26 @@ footer {
     text-align: center;
 }
 
+/* Main content styles */
 main {
     padding-top: 10px; /* Add padding at the top of the main content */
     padding-bottom: 30px; /* Add padding at the bottom of the main content */
     padding-left: 30px;
     padding-right: 30px;
+}
+
+/* Profile image styles */
+.profile-header-image {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    border: 1px solid #b5b5b5; /* Add a border with white color */
+    transition: border-color 0.3s ease;
+}
+
+/* Profile image hover effect */
+.profile-header-image:hover {
+    border-color: #000000; /* Change border color on hover (adjust color as needed) */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add box shadow on hover */
 }
