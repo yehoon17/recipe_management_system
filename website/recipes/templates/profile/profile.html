@@ -1,0 +1,32 @@
+<!-- profile.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Profile</h2>
+    <div class="profile-info">
+        <!-- Display user information -->
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <!-- Add more fields as needed -->
+
+        <!-- Profile Image -->
+        <div class="profile-image-container">
+            <h3>Profile Image</h3>
+            <div class="profile-image">
+                <img src="{{ user.profile.image.url }}" alt="Profile Image">
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_image">Change Profile Image:</label>
+                <input type="file" id="id_image" name="image">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
