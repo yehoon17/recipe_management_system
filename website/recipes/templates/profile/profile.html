@@ -6,27 +6,44 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<main>
+<link rel="stylesheet" href="{% static 'recipes/css/profile.css' %}">
+<main class="profile">
     <h2>Profile</h2>
-    <div class="profile-info">
-        <!-- Display user information -->
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <!-- Add more fields as needed -->
 
+    <!-- Profile Image and Profile Info Container -->
+    <div class="profile-content">
         <!-- Profile Image -->
-        <div class="profile-image-container">
-            <h3>Profile Image</h3>
-            <div class="profile-image">
-                <img src="{{ user.profile.image.url }}" alt="Profile Image">
-            </div>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <label for="id_image">Change Profile Image:</label>
-                <input type="file" id="id_image" name="image">
-                <button type="submit">Upload</button>
-            </form>
+        <div class="profile-image">
+            <img src="{{ user.profile.image.url }}" alt="Profile Image">
         </div>
+
+        <!-- Profile Info -->
+        <div class="profile-info">
+            <!-- Display user information -->
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>First Name:</strong> {{ user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+        </div>
+
+        <!-- Profile Info -->
+        <div class="profile-edit">
+            <a href="{% url 'profile_edit' %}">Edit</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Recipes</h2>
+    <div class="recipe-container">
+        {% for recipe in recipes %}
+        <div class="recipe-item">
+            <a href="{% url 'recipe_detail' pk=recipe.pk %}">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+                <h3>{{ recipe.title }}</h3>
+            </a>
+        </div>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}

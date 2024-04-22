@@ -1,0 +1,117 @@
+.profile {
+    background-color: #f9f9f9;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-content {
+    position: relative;
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-edit {
+    position: absolute; /* Position the button */
+    bottom: 0; /* Align button to the bottom */
+    right: 0; /* Align button to the right */
+    margin: 10px; /* Add some margin */
+}
+
+.profile-edit a {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.profile-edit a:hover {
+    background-color: #0056b3;
+}
+
+hr {
+    width: 100%;
+    margin: 20px 0; /* Add space above and below the horizontal line */
+}
+
+/* Style for the Recipes section */
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recipe-item {
+    margin: 10px; /* Add margin around each recipe item */
+}
+
+.recipe-item a {
+    color: #2ecb4b;
+    text-decoration: none;
+}
+
+.recipe-item a:hover {
+    text-decoration: underline;
+}
+
+.profile-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-form {
+    width: 100%;
+}
+
+.profile-fieldset {
+    margin-bottom: 20px;
+}
+
+.profile-legend {
+    font-weight: bold;
+}
+
+.profile-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.profile-image-preview {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 50px;
+    align-items: center;
+}
