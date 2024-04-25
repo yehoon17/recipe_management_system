@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Avg, Q
 from rest_framework import generics
 from .serializers import RecipeSerializer, IngredientSerializer, RecipeIngredientSerializer
+from django.contrib import messages
 
 
 class RecipeListCreate(generics.ListCreateAPIView):
@@ -298,4 +299,5 @@ def delete_comment(request, recipe_id, comment_id):
 
     if request.method == 'POST':
         comment.delete()
+        messages.success(request, 'Comment deleted successfully.')
         return redirect('recipe_detail', pk=recipe_id)
