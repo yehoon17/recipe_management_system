@@ -1,0 +1,87 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'recipes/css/comment.css' %}">
+
+<div class="comment" style="margin-left: {{ depth }}em;">
+    <p>{{ comment.text }}</p>
+
+    <div class="comment-info">
+        <p class="user">By: {{ comment.user }}</p>
+        <p class="created-at">Created At: {{ comment.created_at }}</p>
+        
+        <button class="comment-btn reply-btn" data-comment-id="{{ comment.id }}">Reply</button>
+        
+        {% if comment.can_edit %}
+            <button class="comment-btn comment-edit-btn" data-comment-id="{{ comment.id }}">Edit</button>
+            <form method="post" action="{% url 'delete_comment' recipe.id comment.id %}" class="delete-form">
+                {% csrf_token %}
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <button type="submit" class="comment-btn">Delete</button>
+            </form>
+        {% endif %}
+    </div>
+
+    <!-- Recursive call to render replies -->
+    <div class="replies">
+        {% if depth is not None %}
+            {% with new_depth=depth|add:"1" %}
+                {% for reply in comment.replies %}
+                    {% include 'components/comment_temp.html' with comment=reply depth=new_depth %}
+                {% endfor %}
+            {% endwith %}
+        {% endif %}
+    </div>
+
+    <div class="reply-form" data-comment-id="{{ comment.id }}" style="display: none;">
+        <form method="post" action="{% url 'reply_comment' recipe.id comment.id %}">
+          {% csrf_token %}
+          <div class="reply-inputs">
+            <textarea name="text" class="reply-textarea"></textarea>
+            <button type="submit" class="reply-submit">Submit</button>
+          </div>
+        </form>
+    </div>
+
+    <div class="comment-edit-form" data-comment-id="{{ comment.id }}" style="display: none;">
+        <form method="post" action="{% url 'update_comment' recipe.id comment.id %}">
+          {% csrf_token %}
+          <div class="edit-inputs">
+            <textarea name="text" class="edit-textarea">{{ comment.text }}</textarea>
+            <button type="submit" class="edit-submit">Submit</button>
+          </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Add event listener to a common parent element
+    document.addEventListener('click', function(event) {
+        // Check if the clicked element is a reply button
+        if (event.target.classList.contains('reply-btn')) {
+            const commentId = event.target.getAttribute('data-comment-id');
+            const replyForm = document.querySelector(`.reply-form[data-comment-id="${commentId}"]`);
+            // Toggle visibility of reply form
+            replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+        }
+    });
+    
+    // Add event listener to edit buttons
+    const editButtons = document.querySelectorAll('.comment-edit-btn');
+    editButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const commentId = this.getAttribute('data-comment-id');
+        console.log('commentId:', commentId);
+        const commentTextDiv = document.querySelector(`.comment-text[data-comment-id="${commentId}"]`);
+        console.log('commentTextDiv:', commentTextDiv);
+        // Toggle visibility of comment text and edit form
+        if (commentTextDiv) {
+            commentTextDiv.style.display = 'none';
+            const commentEditForm = document.querySelector(`.comment-edit-form[data-comment-id="${commentId}"]`);
+            if (commentEditForm) {
+                commentEditForm.style.display = 'block';
+            }
+        }
+    });
+});
+
+</script>

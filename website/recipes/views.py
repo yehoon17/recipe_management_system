@@ -107,14 +107,37 @@ def recipe_detail(request, pk):
     ingredients = recipe.recipeingredient_set.all()
 
     average_rating = recipe.rating_set.aggregate(Avg('value'))['value__avg']
+
+    # comment
     comments = Comment.objects.filter(recipe=recipe)
+    comments_tree = {}
+    comments_dict = {}
+
+    for comment in comments:
+        comments_dict[comment.id] = {
+            'id': comment.id,
+            'user': comment.user.username,
+            'text': comment.text,
+            'created_at': comment.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'parent_comment_id': comment.parent_comment_id,
+            'replies': [],
+            'can_edit': request.user == comment.user
+        }
+
+    for comment_id, comment_data in comments_dict.items():
+        parent_comment_id = comment_data['parent_comment_id']
+        if parent_comment_id:
+            parent_comment = comments_dict[parent_comment_id]
+            parent_comment['replies'].append(comment_data)
+        else:
+            comments_tree[comment_id] = comment_data
 
     context = {
         'recipe': recipe,
         'can_edit': can_edit, 
         'ingredients': ingredients,
         'average_rating': average_rating,
-        'comments': comments,
+        'comments': list(comments_tree.values()),
         }
 
     return render(request, 'recipes/recipe_detail.html', context)

@@ -350,11 +350,10 @@ section {
 }
 
 .comment-textarea {
-    width: 50%;
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical; /* Allow vertical resizing */
 }
 
 .comment-submit {
@@ -364,8 +363,14 @@ section {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .comment-submit:hover {
     background-color: #45a049;
+}
+
+.comment-form{
+    display: flex;
+    margin-bottom: 5px;
 }
