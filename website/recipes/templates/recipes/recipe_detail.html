@@ -8,11 +8,9 @@
         <h2>{{ recipe.title }}</h2>
         <p class="author">Auther: {{ recipe.user.username }}</p>
 
-        {% if recipe.image %}
         <div class="image-container">
             <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
         </div>        
-        {% endif %}
 
         <p><strong>Description:</strong><br> {{ recipe.description }}</p>
         <p><strong>Preparation Time:</strong> {{ recipe.preparation_time }} minutes</p>

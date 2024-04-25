@@ -143,12 +143,12 @@ python manage.py load_recipe_data
  - [x] 재료 삭제 구현
  - [x] 재료 수정 구현
  - [x] 태그 삭제 구현
- - [ ] rating 중복 불가 구현
+ - [x] rating 중복 불가 구현
  - [x] 리뷰 제거
  - [ ] 로그 구현
  - [ ] 테스트 구현
- - [ ] 개인 프로필
- - [ ] 작성한 레시피 조회
+ - [x] 개인 프로필
+ - [x] 작성한 레시피 조회
  - [ ] WEB, WAS, 라우팅 구현
  - [x] REST API 구현
  - [x] REST API와 GraphQL API 비교해보기 
