@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
-from .models import Recipe, Profile, User
+from .models import User, Recipe, Comment, Profile
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -51,3 +51,9 @@ class RecipeForm(forms.ModelForm):
 
 class RecipeSearchForm(forms.Form):
     query = forms.CharField(label='Search for recipes', max_length=100)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']

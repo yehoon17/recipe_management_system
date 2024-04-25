@@ -1,0 +1,94 @@
+.comment {
+    padding: 15px;
+    padding-bottom: 0px;
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    margin-bottom: 3px;
+}
+
+.comment p.user {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.comment p.created-at {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.comment .text {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.replies {
+    margin-top: 15px;
+    border-left: 2px solid #e0e0e0;
+    padding-left: 15px;
+}
+
+.comment-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.comment-btn:hover {
+    background-color: #0056b3;
+}
+
+.comment-info {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+
+.comment-info p {
+    margin-right: 15px; /* Add spacing between paragraphs */
+}
+
+.reply-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Align items to the start of the container */
+    margin-top: 5px; /* Adjust as needed */
+    margin-bottom: 5px; /* Adjust as needed */
+}
+
+
+.reply-inputs {
+    display: flex;
+    align-items: stretch; /* Align items to the start of the container */
+}
+
+.reply-textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reply-submit {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.reply-submit:hover {
+    background-color: #45a049;
+}

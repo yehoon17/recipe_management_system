@@ -30,5 +30,10 @@ urlpatterns = [
 
     path('rest-api/recipe/', views.RecipeListCreate.as_view()),
     path('rest-api/ingredient/', views.IngredientListCreate.as_view()),
-    path('rest-api/recipe-ingredient/', views.RecipeIngredientListCreate.as_view())
+    path('rest-api/recipe-ingredient/', views.RecipeIngredientListCreate.as_view()),
+
+    path('recipe/<int:recipe_id>/comment/create/', views.create_comment, name='create_comment'),
+    path('recipe/<int:recipe_id>/comment/<int:comment_id>/reply/', views.reply_comment, name='reply_comment'),
+    path('recipe/<int:recipe_id>/comment/<int:comment_id>/update/', views.update_comment, name='update_comment'),
+    path('recipe/<int:recipe_id>/comment/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
 ]

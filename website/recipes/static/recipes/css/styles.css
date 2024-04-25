@@ -348,3 +348,29 @@ section {
     font-weight: bold;
     margin: 0 10px;
 }
+
+.comment-textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-submit {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.comment-submit:hover {
+    background-color: #45a049;
+}
+
+.comment-form{
+    display: flex;
+    margin-bottom: 5px;
+}
