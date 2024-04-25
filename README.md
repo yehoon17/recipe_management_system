@@ -139,14 +139,14 @@ python manage.py load_recipe_data
 [스크립트](https://github.com/yehoon17/recipe_management_system/blob/master/script/compare_api.ipynb)
 
 ## 추후 과제
- - [ ] 댓글 구현
+ - [x] 댓글 구현
  - [x] 재료 삭제 구현
  - [x] 재료 수정 구현
  - [x] 태그 삭제 구현
  - [x] rating 중복 불가 구현
  - [x] 리뷰 제거
  - [ ] 로그 구현
- - [ ] 테스트 구현
+ - [x] 테스트 구현
  - [x] 개인 프로필
  - [x] 작성한 레시피 조회
  - [ ] WEB, WAS, 라우팅 구현
