@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ recipe.title }} - Recipe Detail{% endblock %}
 
@@ -64,6 +65,19 @@
             <button type="submit" class="btn-submit-rating">Submit Rating</button>
         </form>
     </div>
+
+    <h3>Comments</h3>
+    <form action="{% url 'create_comment' recipe.id %}" method="post" class="comment-form">
+        {% csrf_token %}
+        <textarea name="text" rows="4" cols="50" placeholder="Write your comment here" class="comment-textarea"></textarea><br>
+        <button type="submit" class="comment-submit">Submit</button>
+    </form>
+    {% block comments %}
+        {% for comment in comments %}
+            {% include 'components/comment_temp.html' with comment=comment depth=0 %}
+        {% endfor %}
+    {% endblock %}
+
+    <script src="{% static 'recipes/js/script.js' %}"></script>
 </main>
-  
 {% endblock %}
