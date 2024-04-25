@@ -58,3 +58,6 @@ class Comment(models.Model):
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-created_at']
