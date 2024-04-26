@@ -57,3 +57,10 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['text']
+
+    def clean_text(self):
+        text = self.cleaned_data.get('text')
+        if not text.strip():
+            raise forms.ValidationError("Comment text cannot be empty.")
+        return text
+        

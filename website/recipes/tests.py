@@ -5,10 +5,10 @@ from .models import Recipe, Comment, User
 
 class CommentCRUDTests(TestCase):
     def setUp(self):
-        # Create a user for testing
+        # 테스트 유저 생성
         self.user = User.objects.create_user(username='testuser', password='12345')
 
-        # Create a recipe for testing
+        # 테스트 레시피 생성
         self.recipe = Recipe.objects.create(
             user=self.user,
             title='Test Recipe',
@@ -70,7 +70,7 @@ class CommentCRUDTests(TestCase):
             'text': updated_text
         })
 
-        self.assertEqual(response.status_code, 302)  # Redirect after successful update
+        self.assertEqual(response.status_code, 302)  
         self.assertTrue(Comment.objects.filter(text=updated_text).exists())
 
     def test_delete_comment(self):
@@ -84,7 +84,7 @@ class CommentCRUDTests(TestCase):
 
         response = self.client.post(reverse('delete_comment', args=[self.recipe.id, comment.id]))
 
-        self.assertEqual(response.status_code, 302)  # Redirect after successful deletion
+        self.assertEqual(response.status_code, 302)  
         self.assertFalse(Comment.objects.filter(text="To be deleted").exists())
 
 

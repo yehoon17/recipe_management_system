@@ -21,6 +21,7 @@ class Recipe(models.Model):
     cooking_time = models.PositiveIntegerField()  # in minutes
     difficulty_level = models.CharField(max_length=50)
     image = models.ImageField(upload_to='recipe_images/', default='recipe_images/default_image.png')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -36,6 +37,9 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     unit = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.quantity} {self.unit} of {self.ingredient}'
     
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -47,11 +51,23 @@ class RecipeTag(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('recipe', 'tag')
+
+    def __str__(self):
+        return f'{self.recipe.title} - {self.tag.name}'
+
 class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     value = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
 
+    class Meta:
+        unique_together = ('user', 'recipe')
+
+    def __str__(self):
+        return f'{self.user.username} - {self.recipe.title}: {self.value}'
+    
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
@@ -61,3 +77,7 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+
+    def __str__(self):
+        return f'Comment by {self.user.username} on {self.recipe.title}'
+    
