@@ -9,6 +9,12 @@ from django.db.models import Avg, Q
 from rest_framework import generics
 from .serializers import RecipeSerializer, IngredientSerializer, RecipeIngredientSerializer
 from django.contrib import messages
+from oauth2_provider.decorators import protected_resource
+from django.http import JsonResponse
+
+@protected_resource()
+def my_protected_view(request):
+    return JsonResponse({'message': 'This is a protected view'})
 
 
 class RecipeListCreate(generics.ListCreateAPIView):

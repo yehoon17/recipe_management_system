@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'recipes.apps.RecipesConfig',	
     'graphene_django',
     'rest_framework',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [

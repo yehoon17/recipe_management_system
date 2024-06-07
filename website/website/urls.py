@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
+    path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ] 
 
 if settings.DEBUG:
